@@ -1,7 +1,7 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
         <a href="{{url("/dashboard")}}" class="app-brand-link">
-            <img src="storage/app/{{ !empty(Auth::user()->logo) ? Auth::user()->logo : '' }}"
+            <img src="{{ !empty(Auth::guard('admin')->user()->logo) ? env('APP_URL').'/'.Auth::guard('admin')->user()->logo : '' }}"
                 style="height: 38px;width: 150px;">
         </a>
 
@@ -27,45 +27,46 @@
             </a>
         </li>
 
-        <li class="menu-item {{ $page_type == 'residentialAll' || $page_type == 'residentialAdd' || $page_type == 'residentialEdit' ?'open':'' }}">
+        <li class="menu-item {{ $page_type == 'categoryAll' || $page_type == 'categoryAdd' || $page_type == 'categoryEdit' ?'open':'' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxs-home"></i>
-                <div data-i18n="Layouts">Residential Properties</div>
+                <div data-i18n="Layouts">Category</div>
             </a>
 
             <ul class="menu-sub">
 
-                <li class="menu-item {{ $page_type == 'residentialAll' ? 'active':''}}">
-                    <a href="{{url('/admin/residential/all')}}" class="menu-link">
-                        <div data-i18n="Without menu">All Properties</div>
+                <li class="menu-item {{ $page_type == 'categoryAll' ? 'active':''}}">
+                    <a href="{{url('/admin/category/all')}}" class="menu-link">
+                        <div data-i18n="Without menu">All Categories</div>
                     </a>
                 </li>
 
-                <li class="menu-item {{ $page_type == 'residentialAdd'?'active':''}}">
-                    <a href="{{url('/admin/residential/add')}}" class="menu-link">
-                        <div data-i18n="Without navbar">Add new Property</div>
+                <li class="menu-item {{ $page_type == 'categoryAdd' ? 'active':''}}">
+                    <a href="{{url('/admin/category/add')}}" class="menu-link">
+                        <div data-i18n="Without navbar">Add new Category</div>
                     </a>
                 </li>
             </ul>
         </li>
 
-        <li class="menu-item {{ $page_type == 'commercialAll' || $page_type == 'commercialAdd' || $page_type == 'commercialEdit' ?'open':'' }}">
+
+        <li class="menu-item {{ $page_type == 'productAll' || $page_type == 'productAdd' || $page_type == 'productEdit' ?'open':'' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxs-home"></i>
-                <div data-i18n="Layouts">Commercial Properties</div>
+                <div data-i18n="Layouts">Products</div>
             </a>
 
             <ul class="menu-sub">
 
-                <li class="menu-item {{ $page_type == 'commercialAll' ? 'active':''}}">
-                    <a href="{{url('/admin/commercial/all')}}" class="menu-link">
-                        <div data-i18n="Without menu">All Properties</div>
+                <li class="menu-item {{ $page_type == 'productAll' ? 'active':''}}">
+                    <a href="{{url('/admin/product/all')}}" class="menu-link">
+                        <div data-i18n="Without menu">All Products</div>
                     </a>
                 </li>
 
-                <li class="menu-item {{ $page_type == 'commercialAdd' ? 'active':''}}">
-                    <a href="{{url('/admin/commercial/add')}}" class="menu-link">
-                        <div data-i18n="Without navbar">Add new Property</div>
+                <li class="menu-item {{ $page_type == 'productAdd'?'active':''}}">
+                    <a href="{{url('/admin/product/add')}}" class="menu-link">
+                        <div data-i18n="Without navbar">Add new Product</div>
                     </a>
                 </li>
             </ul>

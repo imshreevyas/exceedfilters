@@ -48,16 +48,18 @@
                                         <form id="updateProfile">
                                             <div class="row">
                                                 <div class="mb-3 col-md-6">
-                                                    <label for="username" class="form-label">Company Name</label>
-                                                    <input class="form-control" type="text" id="username"
-                                                        name="username" value="{{ $account['username'] }}"
-                                                        placeholder="Enter Company Username" autofocus />
+                                                    <label for="username" class="form-label">Admin Name</label>
+                                                    <input class="form-control" type="text" id="name"
+                                                        name="name" value="{{ $account['name'] }}"
+                                                        placeholder="Enter Admin Name" autofocus />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="mb-3 col-md-6">
+                                                    @if(!empty($account['logo']))
                                                     <img src="{{ url($account['logo']) }}" alt="" srcset=""
                                                         style="height:100px;width:100px">
+                                                    @endif
                                                 </div>
                                                 <div class="mb-3 col-md-6">
                                                     <label for="zipCode" class="form-label">Company Logo</label>
