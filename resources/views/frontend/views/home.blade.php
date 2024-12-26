@@ -11,17 +11,15 @@
             <div class="hero-style1">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2 class="hero-title wow img-custom-anim-left" data-wow-duration="1.5s" data-wow-delay="0.1s">Nanofiber Air-Filters</h2>
-
-                        <h2 class="hero-title wow img-custom-anim-right" data-wow-duration="1.7s" data-wow-delay="0.1s">Work Smarter & Harder</h2>
+                        <h1 class="hero-title wow img-custom-anim-left" data-wow-duration="1.5s" data-wow-delay="0.1s">Drive Cost Savings and Deliver Clean Air with exceed™ Air Filters</h1>
                     </div>
                     <div class="col-lg-6">
-                        <p class="hero-text wow img-custom-anim-right" data-wow-duration="1.5s" data-wow-delay="0.1s">Wherever you are, enjoy clean air with exceed nanofiber air filters.</p>
+                        <p class="hero-text wow img-custom-anim-right" data-wow-duration="1.5s" data-wow-delay="0.1s">Nanofiber Technology for Superior Sub-Micron Capture, Extended Filter Life, and Reduced Energy Costs</p>
                         <div class="btn-group fade_right">
-                            <a href="products" class="btn wow img-custom-anim-right" >
+                            <a href="#" class="btn wow img-custom-anim-right" >
                                 <span class="link-effect">
-                                    <span class="effect-1">VIEW OUR PRODUCTS</span>
-                                    <span class="effect-1">VIEW OUR PRODUCTS</span>
+                                    <span class="effect-1">VIEW PRODUCTS</span>
+                                    <span class="effect-1">VIEW PRODUCTS</span>
                                 </span>
                             </a>
                         </div>
@@ -35,7 +33,7 @@
     <!--==============================
     Value of PRoposition
     ==============================-->
-    <div class="service-area-1 space bg-theme">
+    <div class="service-area-1 space bg-gradient">
         <div class="service-img-1-1 shape-mockup wow img-custom-anim-left" data-wow-duration="1.5s" data-wow-delay="0.2s" data-left="0" data-top="-100px" data-bottom="140px">
             <img src="{{ asset('assets/frontend/img/hero/value-of-proposition.png') }}" alt="img">
         </div>
@@ -44,43 +42,28 @@
                 <div class="col-lg-6">
                     <div class="about-content-wrap">
                         <div class="title-area mb-0">
-                            <h2 class="sec-title">Exceed Air Filters</h2>
-                            <p class="sec-text mt-35 mb-40">Our nanofiber technology has been in use for over 20 years. A filter that won't slump and Microscopic nanofibers lets air flow freely, Exclusively made and assembled in Tennessee, creating local jobs and supporting our community.</p>
+                            <h2 class="sec-title text-white ">Benefits</h2>
+                            <p class="sec-text mt-15 mb-40 text-white ">Transform Your Operations with Our Cutting-Edge Filter Technology</p>
                             <div class="skill-feature">
-                                <h3 class="skill-feature_title">Virtually Indestructible</h3>
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 85%;">
-                                    </div>
-                                    <div class="progress-value"><span class="counter-number">98</span>%</div>
-                                </div>
+                                
+                                <h3 class="about-feature-wrap skill-feature_title text-white ">High Efficiency <img src="{{ asset('assets/frontend/img/icon/high-efficency.png') }}"></h3>
+                                <p class="mb-n1 text-white ">exceed™ Air Filters utilize advanced nanofiber technology to capture sub-micron particles ensuring cleaner air and improved air quality for your business operations.</p>
                             </div>
                             <div class="skill-feature">
-                                <h3 class="skill-feature_title">Technologically Advanced</h3>
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 100%;">
-                                    </div>
-                                    <div class="progress-value"><span class="counter-number">100</span>%</div>
-                                </div>
+                                <h3 class="about-feature-wrap skill-feature_title text-white ">Reduced Life Cycle Costs <img src="{{ asset('assets/frontend/img/icon/life-cycle-cost.png') }}"></h3>
+                                <p class="mb-n1 text-white ">Our filters are designed to lower overall maintenance, energy, and labor costs.</p>
                             </div>
                             <div class="skill-feature">
-                                <h3 class="skill-feature_title">Longer Lasting</h3>
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 80%;">
-                                    </div>
-                                    <div class="progress-value"><span class="counter-number">95</span>%</div>
-                                </div>
+                                <h3 class="about-feature-wrap skill-feature_title text-white ">Premium Quality <img src="{{ asset('assets/frontend/img/icon/premium-quality.png') }}"></h3>
+                                <p class="mb-n1 text-white ">exceed™ Air Filters are manufactured in the USA to the highest quality standards using the most premium materials, ensuring reliable performance and exceptional durability.</p>
                             </div>
                             <div class="skill-feature">
-                                <h3 class="skill-feature_title">Made in USA</h3>
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 100%;">
-                                    </div>
-                                    <div class="progress-value"><span class="counter-number">100</span>%</div>
-                                </div>
+                                <h3 class="about-feature-wrap skill-feature_title text-white ">Longer Lasting <img src="{{ asset('assets/frontend/img/icon/long-lasting.png') }}"></h3>
+                                <p class="mb-n1 text-white ">The superior construction of exceed Air Filters means extended operational life, reducing downtime and the need for replacements.</p>
                             </div>
                         </div>
                         <div class="btn-wrap mt-50">
-                            <a href="cost-saving-calculator" class="link-btn">
+                            <a href="#" class="btn link-btn">
                                 <span class="link-effect">
                                     <span class="effect-1">COST SAVING CALCULATOR</span>
                                     <span class="effect-1">COST SAVING CALCULATOR</span>
@@ -96,76 +79,70 @@
 
 
     <!--==============================
-    Our Products
+    Feature Area
     ==============================-->
-    <div class="team-area-1 space overflow-hidden">
+    <div class="feature-area-1 space-bottom space-top">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-6">
+                <div class="col-xl-6 col-lg-8">
                     <div class="title-area text-center">
-                        <h2 class="sec-title">Our Products</h2>
+                        <h2 class="sec-title">OUR PRODUCTS</h2>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="row gy-4 justify-content-center">
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-card">
-                        <div class="team-card_img">
-                            <img src="{{ asset('assets/frontend/img/product/filter-img.png') }}" alt="Team Image">
+            <div class="row gy-4 align-items-center justify-content-center">
+                <div class="col-xl-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-card-icon">
+                            <img src="{{ asset('assets/frontend/img/icon/feature-icon1-1.svg') }}" alt="icon">
                         </div>
-                        <div class="team-card_content">
-                            <h3 class="team-card_title"><a href="team-details.html">Premium MERV 8 Nanofiber Air Filter.</a></h3>
-                            <span class="team-card_desig">from $20.49</span>
-                        </div>
+                        <h4 class="feature-card-title">
+                            <a href="#">Commercial and Industrial Filters</a>
+                        </h4>
+                        <p class="feature-card-text">We care success relationships fuel success we love building</p>
+                        <a href="#" class="link-btn">
+                            <span class="link-effect">
+                                <span class="effect-1">VIEW DETAILS</span>
+                                <span class="effect-1">VIEW DETAILS</span>
+                            </span>
+                            <img src="{{ asset('assets/frontend/img/icon/arrow-left-top.svg') }}" alt="icon">
+                        </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-card">
-                        <div class="team-card_img">
-                            <img src="{{ asset('assets/frontend/img/team/team-1-1.png') }}" alt="Team Image">
+                <div class="col-xl-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-card-icon">
+                            <img src="{{ asset('assets/frontend/img/icon/feature-icon1-2.svg') }}" alt="icon">
                         </div>
-                        <div class="team-card_content">
-                            <h3 class="team-card_title"><a href="team-details.html">Premium MERV 11 Nanofiber Air Filter.</a></h3>
-                            <span class="team-card_desig">from $20.99</span>
-                        </div>
+                        <h4 class="feature-card-title">
+                            <a href="#">Residential Filters</a>
+                        </h4>
+                        <p class="feature-card-text">We care success relationships fuel success we love building</p>
+                        <a href="#" class="link-btn">
+                            <span class="link-effect">
+                                <span class="effect-1">VIEW DETAILS</span>
+                                <span class="effect-1">VIEW DETAILS</span>
+                            </span>
+                            <img src="{{ asset('assets/frontend/img/icon/arrow-left-top.svg') }}" alt="icon">
+                        </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-card">
-                        <div class="team-card_img">
-                            <img src="{{ asset('assets/frontend/img/team/team-1-1.png') }}" alt="Team Image">
+                <div class="col-xl-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-card-icon">
+                            <img src="{{ asset('assets/frontend/img/icon/feature-icon1-3.svg') }}" alt="icon">
                         </div>
-                        <div class="team-card_content">
-                            <h3 class="team-card_title"><a href="team-details.html">Premium MERV 13 Nanofiber Air Filter.</a></h3>
-                            <span class="team-card_desig">from $21.49</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="row gy-4 justify-content-center">
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-card">
-                        <div class="team-card_img">
-                            <img src="{{ asset('assets/frontend/img/team/team-1-1.png') }}" alt="Team Image">
-                        </div>
-                        <div class="team-card_content">
-                            <h3 class="team-card_title"><a href="team-details.html">Premium Nanofiber Filter 2-Pack.</a></h3>
-                            <span class="team-card_desig">from $34.83</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-card">
-                        <div class="team-card_img">
-                            <img src="{{ asset('assets/frontend/img/team/team-1-1.png') }}" alt="Team Image">
-                        </div>
-                        <div class="team-card_content">
-                            <h3 class="team-card_title"><a href="team-details.html">Premium Nanofiber Filter 4-Pack.</a></h3>
-                            <span class="team-card_desig">from $61.47</span>
-                        </div>
+                        <h4 class="feature-card-title">
+                            <a href="#">Face Masks</a>
+                        </h4>
+                        <p class="feature-card-text">We care success relationships fuel success we love building</p>
+                        <a href="#" class="link-btn">
+                            <span class="link-effect">
+                                <span class="effect-1">VIEW DETAILS</span>
+                                <span class="effect-1">VIEW DETAILS</span>
+                            </span>
+                            <img src="{{ asset('assets/frontend/img/icon/arrow-left-top.svg') }}" alt="icon">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -174,44 +151,26 @@
 
 
     <!--==============================
-    About Area
+    Products Area
     ==============================-->
-    <div class="about-area-1 space bg-theme">
-        <div class="about-img-1-1 shape-mockup img-custom-anim-left wow" data-left="0" data-top="-100px" data-bottom="140px" data-wow-duration="1.5s" data-wow-delay="0.1s">
-            <img src="{{ asset('assets/frontend/img/hero/homepage-about-banner.webp') }}" alt="img">
-        </div>
-        <div class="container">
-            <div class="row align-items-center justify-content-end">
-                <div class="col-lg-6">
-                    <div class="overflow-hidden">
-                        <div class="about-content-wrap ">
-                            <div class="title-area mb-0">
-                                <h2 class="sec-title">We believe everyone deserves to breathe fresh.</h2>
-                                <p class="sec-text mt-35">Exceed filters are manufactured and marketed by eSpin Technologies Incorporated, a nanotechnology firm established over 20 years ago in Chattanooga, TN.</p>
-                                <p class="sec-text mt-30">Our mission was to develop the technology required to bring the benefits of nanofiber technology to day to day life. We knew our nanofiber technology could make the world a better place.</p>
-                                <div class="btn-wrap mt-50">
-                                    <a href="about" class="link-btn">
-                                        <span class="link-effect">
-                                            <span class="effect-1">ABOUT US</span>
-                                            <span class="effect-1">ABOUT US</span>
-                                        </span>
-                                        <img src="{{ asset('assets/frontend/img/icon/arrow-left-top.svg') }}" alt="icon">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('frontend.views.products')
+
+    
 
     
     <!--==============================
     Testimonial Area
     ==============================-->
-    <div class="testimonial-area-2 space bg-gray overflow-hidden">
+    <!-- <div class="testimonial-area-2 space bg-gray overflow-hidden">
+
         <div class="container-fluid p-0">
+            <div class="row justify-content-center">
+                <div class="col-xxl-7 col-xl-6 col-lg-8">
+                    <div class="title-area text-center">
+                        <h2 class="sec-title text-smoke">TESTIMONIALS</h2>
+                    </div>
+                </div>
+            </div>
             <div class="row global-carousel testi-slider2" data-slide-show="1" data-dots="false" data-center-mode="true" data-xl-center-mode="true" data-ml-center-mode="true" data-center-padding="470px" data-xl-center-padding="380px" data-ml-center-padding="300px">
                 <div class="col-lg-4">
                     <div class="testi-box style2">
@@ -251,13 +210,45 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
+    <!--==============================
+    About Area
+    ==============================-->
+    <div class="about-area-1 space bg-gradient">
+        <div class="about-img-1-1 shape-mockup img-custom-anim-left wow" data-left="0" data-top="-100px" data-bottom="140px" data-wow-duration="1.5s" data-wow-delay="0.1s">
+            <img src="{{ asset('assets/frontend/img/hero/homepage-about-banner.webp') }}" alt="img">
+        </div>
+        <div class="container">
+            <div class="row align-items-center justify-content-end">
+                <div class="col-lg-6">
+                    <div class="overflow-hidden">
+                        <div class="about-content-wrap ">
+                            <div class="title-area mb-0">
+                                <h2 class="sec-title text-white">We believe everyone deserves to breathe fresh.</h2>
+                                <p class="sec-text mt-35 text-white">Exceed Air Filters are engineered and supplied by eSpin Technologies Inc. , a leader in nanotechnology with over 20 years of experience in delivering high-performance solutions. Located in Chattanooga, TN, eSpin specializes in the development of advanced nanofiber technologies, providing industries such as automotive, government, and industrial sectors with superior air filtration products.</p>
+                                <p class="sec-text mt-30 text-white">Our filters are designed to meet the rigorous demands of your applications, ensuring reliability, efficiency, and exceptional performance in the most challenging environments.</p>
+                                <div class="btn-wrap mt-50">
+                                    <a href="#" class="btn link-btn">
+                                        <span class="link-effect">
+                                            <span class="effect-1">ABOUT US</span>
+                                            <span class="effect-1">ABOUT US</span>
+                                        </span>
+                                        <img src="{{ asset('assets/frontend/img/icon/arrow-left-top.svg') }}" alt="icon">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!--==============================
     Faq Area
     ==============================-->
-    <div class="faq-area-1 space overflow-hidden">
+    <!-- <div class="faq-area-1 space overflow-hidden">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-8">
@@ -318,7 +309,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     
 <!-- Main Body Content -->

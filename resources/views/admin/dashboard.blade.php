@@ -7,7 +7,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Triniti Dashboard</title>
+    <title>Exceed Dashboard</title>
 
     <meta name="description" content="" />
     <script src="https://code.jquery.com/jquery-3.6.3.js"

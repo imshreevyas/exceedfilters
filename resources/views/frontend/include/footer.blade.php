@@ -28,7 +28,7 @@
                     <div class="col-xxl-6 col-lg-7">
                         <ul class="footer-menu-list">
                             <li>
-                                <a href="about-us">
+                                <a href="#">
                                     <span class="link-effect">
                                         <span class="effect-1">ABOUT COMPANY</span>
                                         <span class="effect-1">ABOUT COMPANY</span>
@@ -36,7 +36,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="products">
+                                <a href="#">
                                     <span class="link-effect">
                                         <span class="effect-1">OUR PRODUCTS</span>
                                         <span class="effect-1">OUR PRODUCTS</span>
@@ -44,7 +44,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="contact-us">
+                                <a href="#">
                                     <span class="link-effect">
                                         <span class="effect-1">CONTACT</span>
                                         <span class="effect-1">CONTACT</span>
@@ -79,50 +79,51 @@
         <div class="copyright-wrap">
             <div class="container">
                 <div class="row gy-3 justify-content-between align-items-center">
-                    <div class="col-md-6">
-                        <div class="social-btn style3">
-                    @if(isset($settings['facebook']) && !empty($settings['facebook']))
-                            <a href="https://www.facebook.com/">
-                                <span class="link-effect">
-                                    <span class="effect-1"><i class="fab fa-facebook"></i></span>
-                                    <span class="effect-1"><i class="fab fa-facebook"></i></span>
-                                </span>
-                            </a>
-                    @endif
-                
-                    @if(isset($settings['instagram']) && !empty($settings['instagram']))
-                            <a href="https://instagram.com/">
-                                <span class="link-effect">
-                                    <span class="effect-1"><i class="fab fa-instagram"></i></span>
-                                    <span class="effect-1"><i class="fab fa-instagram"></i></span>
-                                </span>
-                            </a>
-                    @endif
-                
-                    @if(isset($settings['twitter']) && !empty($settings['twitter']))
-                            <a href="https://twitter.com/">
-                                <span class="link-effect">
-                                    <span class="effect-1"><i class="fab fa-twitter"></i></span>
-                                    <span class="effect-1"><i class="fab fa-twitter"></i></span>
-                                </span>
-                            </a>
-                    @endif
-                
-                    @if(isset($settings['dribbble']) && !empty($settings['dribbble']))
-                            <a href="https://dribbble.com/">
-                                <span class="link-effect">
-                                    <span class="effect-1"><i class="fab fa-dribbble"></i></span>
-                                    <span class="effect-1"><i class="fab fa-dribbble"></i></span>
-                                </span>
-                            </a>
-                    @endif
-                        </div>
-                    </div>
-                    <div class="col-md-6 align-self-center text-lg-end">
-                        <p class="copyright-text">Copyright © 2024
-                            <a href="https://themeforest.net/user/themegenix">{{ $settings['company_name'] }}</a>
+                    <div class="col-md-6 align-self-center text-lg-start">
+                        <p class="copyright-text">Copyright © {{ date('Y') }}
+                            <a href="#">{{ $settings['company_name'] }}</a>
                         </p>
                     </div>
+                    <div class="col-md-6 align-self-center text-lg-end">
+                        <div class="social-btn style3">
+                            @if(isset($settings['facebook']) && !empty($settings['facebook']))
+                                    <a href="https://www.facebook.com/">
+                                        <span class="link-effect">
+                                            <span class="effect-1"><i class="fab fa-facebook"></i></span>
+                                            <span class="effect-1"><i class="fab fa-facebook"></i></span>
+                                        </span>
+                                    </a>
+                            @endif
+                        
+                            @if(isset($settings['instagram']) && !empty($settings['instagram']))
+                                    <a href="https://instagram.com/">
+                                        <span class="link-effect">
+                                            <span class="effect-1"><i class="fab fa-instagram"></i></span>
+                                            <span class="effect-1"><i class="fab fa-instagram"></i></span>
+                                        </span>
+                                    </a>
+                            @endif
+                        
+                            @if(isset($settings['twitter']) && !empty($settings['twitter']))
+                                    <a href="https://twitter.com/">
+                                        <span class="link-effect">
+                                            <span class="effect-1"><i class="fab fa-twitter"></i></span>
+                                            <span class="effect-1"><i class="fab fa-twitter"></i></span>
+                                        </span>
+                                    </a>
+                            @endif
+                        
+                            @if(isset($settings['dribbble']) && !empty($settings['dribbble']))
+                                    <a href="https://dribbble.com/">
+                                        <span class="link-effect">
+                                            <span class="effect-1"><i class="fab fa-dribbble"></i></span>
+                                            <span class="effect-1"><i class="fab fa-dribbble"></i></span>
+                                        </span>
+                                    </a>
+                            @endif
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>

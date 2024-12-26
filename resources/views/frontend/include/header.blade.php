@@ -5,26 +5,26 @@
         <div class="mobile-menu-area">
             <button class="menu-toggle"><i class="fas fa-times"></i></button>
             <div class="mobile-logo">
-                <a href="index.html"><img src="storage/app/admin/fav.png" alt="Ovation"></a>
+                <a href="#"><img src="storage/app/admin/fav.png" alt="Ovation"></a>
             </div>
             <div class="mobile-menu">
                 <ul>
                     <li>
-                        <a href="{{ env('APP_URL') }}">HOME</a>
+                        <a href="#">HOME</a>
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="{{ env('APP_URL') }}/products">PRODUCTS</a>
+                        <a href="#">PRODUCTS</a>
                         <ul class="sub-menu">
-                            <li class="active"><a href="index.html">Air Filters</a></li>
-                            <li><a href="home-2.html">Mask Filters</a></li>
-                            <li><a href="home-3.html">Face Mask</a></li>
+                            <li class="active"><a href="#">Air Filters</a></li>
+                            <li><a href="#">Mask Filters</a></li>
+                            <li><a href="#">Face Mask</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ env('APP_URL') }}/about-us">About Us</a>
+                        <a href="#">About Us</a>
                     </li>
                     <li>
-                        <a href="{{ env('APP_URL') }}/contact-us">Contact</a>
+                        <a href="#">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -83,22 +83,14 @@
                     <div class="row align-items-center justify-content-between">
                         <div class="col-auto">
                             <div class="header-logo">
-                                <a href="index.html">
+                                <a href="/">
                                     <img src="{{ $settings['logo'] }}" alt="logo">
                                 </a>
                             </div>
                         </div>
-                        <div class="col-auto ms-auto">
+                        <div class="col-auto">
                             <nav class="main-menu d-none d-lg-inline-block">
                                 <ul>
-                                    <li>
-                                        <a href="/">
-                                            <span class="link-effect">
-                                                <span class="effect-1">HOME</span>
-                                                <span class="effect-1">HOME</span>
-                                            </span>
-                                        </a>
-                                    </li>
                                     <li class="menu-item-has-children">
                                         <a href="#">
                                             <span class="link-effect">
@@ -151,11 +143,11 @@
                                         <span class="effect-1">SEARCH</span>
                                     </span>
                                 </button> -->
-                                <button type="button" class="sidebar-btn sideMenuToggler">
+                                <!-- <button type="button" class="sidebar-btn sideMenuToggler">
                                     <span class="line"></span>
                                     <span class="line"></span>
                                     <span class="line"></span>
-                                </button>
+                                </button> -->
                             </div>
                         </div>
                     </div>

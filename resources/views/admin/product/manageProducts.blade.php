@@ -42,12 +42,12 @@
                     <!-- Content -->
 
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Commercial Property /</span> Manage</h4>
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Commercial Product /</span> Manage</h4>
                         <div class="card">
                             <div style="display: flex;">
-                                <h5 class="card-header">Commercial Manage Property</h5>
+                                <h5 class="card-header">Commercial Manage Product</h5>
                                 <h5 class="card-header">
-                                    <a type="button" href="{{ url('admin/commercial/add') }}"
+                                    <a type="button" href="{{ url('admin/product/add') }}"
                                         class="btn btn-outline-secondary btn-small text-red"
                                         title="Edit Client Details">Add
                                         New</a>
@@ -58,24 +58,25 @@
                                     <thead>
                                         <tr>
                                             <th>Sr No.</th>
-                                            <th>Property Name</th>
-                                            <th>Building Name</th>
+                                            <th>Product Name</th>
+                                            <th>Category Name</th>
                                             <th>Status</th>
                                             <th>Created at</th>
-                                            <th>Assets Actions</th>
+                                            <th>Images Assets Actions</th>
+                                            <th>Specification Assets Actions</th>
                                             <th>Edit Actions</th>
                                             <th>Update Status Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody class="table-border-bottom-0">
                                         @php($i = 1)
-                                        @foreach ($properties as $singledata)
+                                        @foreach ($products as $singledata)
                                         <tr>
                                             <td>{{ $i++; }}</td>
                                             <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-                                                {{ $singledata->property_name}} </td>
-                                            <td>{{ $singledata->building_name}}</td>
-                                            <td id="alert-{{ $singledata['property_uid'] }}">
+                                                {{ $singledata->product_name }} </td>
+                                            <td>{{ $singledata->category->name}}</td>
+                                            <td id="alert-{{ $singledata['product_uid'] }}">
                                                 @if($singledata->status == '1')
                                                 <span class="btn alert-success btn-sm">Active</span>
                                                 @else
@@ -85,15 +86,19 @@
                                             </td>
                                             <td>{{ date('D, M Y',strtotime($singledata->created_at)) }}</td>
                                             <td>
-                                                <a class="btn btn-primary text-white btn-sm" onclick="UpdateImageModal('{{ $singledata['property_uid'] }}')"
-                                                    title="Edit Client Details">Add New Image/Video</a>
+                                                <a class="btn btn-primary text-white btn-sm" onclick="UpdateImageModal('{{ $singledata['product_uid'] }}')"
+                                                    title="Edit Client Details">Add New Product Image</a>
                                             </td>
                                             <td>
-                                                <a class="btn btn-primary text-white btn-sm" href="{{ env('APP_URL').'/admin/commercial/edit/'.$singledata['id'] }}"
+                                                <a class="btn btn-primary text-white btn-sm" onclick="UpdateSpecificationModal('{{ $singledata['product_uid'] }}')"
+                                                    title="Edit Client Details">Add New Specification PDF</a>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-primary text-white btn-sm" href="{{ env('APP_URL').'/admin/product/edit/'.$singledata['product_uid'] }}"
                                                     title="Edit Client Details">Edit</a>
                                             </td>
                                             <td>
-                                            <a class="btn btn-primary text-white btn-sm" onclick="deleteProperty('{{ $singledata['property_uid'] }}');"
+                                            <a class="btn btn-primary text-white btn-sm" onclick="deleteProduct('{{ $singledata['product_uid'] }}');"
                                                 title="Delete Client Data">Update Status</a>
                                             </td>
                                         </tr>
@@ -121,44 +126,11 @@
     </div>
     <!-- / Layout wrapper -->
 
-    <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel1">Property Assets</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-
-                        <div class="row">
-                            <form id="addNewAssets">
-                                @csrf
-                                <input class="form-control" type="hidden" id="property_uid" name="property_uid" />
-                                <div class="mb-3 col-md-6">
-                                    <label for="email" class="form-label">Add New Assets</label>
-                                    <input class="form-control" type="file" id="property_assets[]" name="property_assets[]" multiple />
-                                </div>
-                            
-                                <div class="mb-3 col-md-12">
-                                    <button type="submit" class="btn btn-primary" id="addNewAssetsID" name="addNewAssetsID">Save Package</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="row">
-                            <h4>All Assets</h4>
-                            <div id="assetsData" style="height: 300px;overflow: auto;display: flex;flex-direction: row;width: 100%;flex-wrap: wrap;"></div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" onclick="closeModal()">
-                            Close
-                        </button>
-                    </div>
-            </div>
-            
-        </div>
-    </div>
+        <!-- Assets Modal -->
+        @include('admin.product.assets_modal')
+        
+        <!-- Specification Modal -->
+        @include('admin.product.specification_modal')
     </div>
 
     <style>
@@ -194,9 +166,9 @@
 
 
     <script>
-    function closeModal() {
-        $('#assetsData').html(''); //remove all add on documents
-        $('#basicModal').modal('hide'); //hide the modal 
+    function closeModal(id) {
+        $('.assetsData').html(''); //remove all add on documents
+        $(`#${id}`).modal('hide'); //hide the modal 
     }
 
     function show_Toaster(message, type) {
@@ -220,11 +192,10 @@
         $('#table_id').DataTable();
     });
 
-
-    function UpdateImageModal(property_uid) {
+    async function UpdateImageModal(product_uid) {
 
         // Call Ajax and populate Data
-        axios.get(`${url}/admin/commercial/assets/get/${property_uid}`).then(function(response) {
+        await axios.get(`${url}/admin/product/assets/get/${product_uid}`).then(function(response) {
             // handle success
             $('#assetsData').html(response.data.html);
             if (response.data.type === 'error') {
@@ -234,17 +205,40 @@
             show_Toaster(err.response.data.message, 'error')
         })
 
-        $('#property_uid').val(property_uid)
-        $('#addNewAssetsID').val(property_uid)
+        $('.product_uid').val(product_uid)
+        $('.addNewAssetsID').val(product_uid)
         $('#basicModal').modal('show');
     }
 
-    function deleteAsset(property_uid, key){
-        axios.post(`${url}/admin/commercial/deleteAssets/${property_uid}/${key}`).then(function(response) {
+    async function UpdateSpecificationModal(product_uid) {
+
+        // Call Ajax and populate Data
+        await axios.get(`${url}/admin/product/sepcifications/get/${product_uid}`).then(function(response) {
+            // handle success
+            $('#sepcificationsData').html(response.data.html);
+            if (response.data.type === 'error') {
+                show_Toaster(response.data.message, response.data.type)
+            }
+        }).catch(function(err) {
+            show_Toaster(err.response.data.message, 'error')
+        })
+
+        $('.product_uid').val(product_uid)
+        $('.addNewAssetsID').val(product_uid)
+        $('#specificationModal').modal('show');
+    }
+
+    function deleteAsset(product_uid, key, type){
+        axios.post(`${url}/admin/product/deleteAssets/${product_uid}/${key}/${type}`).then(function(response) {
             // handle success
             show_Toaster(response.data.message, response.data.type)
             if (response.data.type === 'success') {
-                UpdateImageModal(property_uid)
+
+                if(type == 'product_assets')
+                    UpdateImageModal(product_uid)
+                else if(type == 'product_specification_assets')
+                    UpdateSpecificationModal(product_uid)
+
             }
         }).catch(function(err) {
             show_Toaster(err.response.data.message, 'error')
@@ -256,35 +250,34 @@
         $('#basicModal').modal('show');
     }
 
-
-    $('#addNewAssets').submit(function(e) {
+    $('.addNewAssets').submit(function(e) {
         e.preventDefault();
         var formdata = new FormData(this);
-        axios.post(`${url}/admin/commercial/addAssets`, formdata).then(function(response) {
+        axios.post(`${url}/admin/product/addAssets`, formdata).then(function(response) {
             // handle success
-            $("#addNewAssets")[0].reset();
+            $(".addNewAssets")[0].reset();
             show_Toaster(response.data.message, response.data.type)
             if (response.data.type === 'success') {
-                UpdateImageModal($('#property_uid').val())
+                UpdateImageModal($('#product_uid').val())
             }
         }).catch(function(err) {
             show_Toaster(err.response.data.message, 'error')
         })
     });
 
-    function deleteProperty(property_uid) {
+    function deleteProduct(product_uid) {
         if (confirm('Are you sure?')) {
-            axios.post(`${url}/admin/commercial/delete/${property_uid}`, {
-                property_uid
+            axios.post(`${url}/admin/product/delete/${product_uid}`, {
+                product_uid
             }).then(function(response) {
                 // handle success
                 show_Toaster(response.data.message, response.data.type)
                 if (response.data.type === 'success') {
                     if(response.data.status == 'Active'){
-                        document.getElementById(`alert-${property_uid}`).innerHTML = '<span class="btn alert-success btn-sm">Active</span>';
+                        document.getElementById(`alert-${product_uid}`).innerHTML = '<span class="btn alert-success btn-sm">Active</span>';
                     }
                     else if(response.data.status == 'Deactive'){
-                        document.getElementById(`alert-${property_uid}`).innerHTML = '<span class="btn alert-danger btn-sm">Deactived</span>';
+                        document.getElementById(`alert-${product_uid}`).innerHTML = '<span class="btn alert-danger btn-sm">Deactived</span>';
                     }
                 }
             }).catch(function(err) {
@@ -292,6 +285,7 @@
             })
         }
     }
+
     </script>
 </body>
 

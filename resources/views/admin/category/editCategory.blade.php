@@ -38,142 +38,58 @@
                         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Commercial Property /</span>
                             Edit Property</h4>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <form id="editCommercialProperty">
-                                    <div class="card mb-4">
-                                        <h5 class="card-header">Property Details</h5>
-                                        <!-- Account -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form id="editCategory">
+                                        <div class="card mb-4">
+                                            <h5 class="card-header">Category Details</h5>
+                                            <!-- Account -->
 
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Property Name</label>
-                                                    <input class="form-control" type="text" id="property_name"
-                                                        name="property_name" value="{{ $property_data['property_name'] }}"
-                                                        placeholder="Enter Property Name" />
-                                                </div>
-
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Property type</label>
-                                                    <select name="property_type" class="form-control">
-                                                        <option {{ $property_data['furnished']  == 'Rental' ? 'selected' : '' }} value="Rental">Rental</option>
-                                                        <option {{ $property_data['furnished']  == 'Sale' ? 'selected' : '' }} value="Sale">Sale</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Building Name</label>
-                                                    <input class="form-control" type="text" id="building_name"
-                                                        name="building_name" value="{{ $property_data['building_name'] }}" placeholder="Enter Building Name" />
-                                                </div>
-                                                
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Selling Price</label>
-                                                    <input class="form-control" type="text" id="sale_price" name="sale_price" value="{{ $property_data['sale_price'] }}"
-                                                        placeholder="Enter Selling Price" />
-                                                </div>
-
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Carpet area</label>
-                                                    <input class="form-control" type="text" id="carpet" name="carpet" value="{{ $property_data['carpet'] }}"
-                                                        placeholder="Enter Carpet Area" />
-                                                </div>
-
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Height</label>
-                                                    <input class="form-control" type="text" id="heights" name="heights"
-                                                        value="{{ $property_data['heights'] }}" placeholder="Enter Height" />
-                                                </div>
-
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Frontage</label>
-                                                    <input class="form-control" type="text" id="frontage" name="frontage" value="{{ $property_data['frontage'] }}"
-                                                        placeholder="Enter Frontage" />
-                                                </div>
-                                                
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Self Contained</label>
-                                                    <input class="form-control" type="text" id="self_contained" value="{{ $property_data['self_contained'] }}"
-                                                        name="self_contained" placeholder="Enter Self Contained" />
-                                                </div>
-
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Car Parkings</label>
-                                                    <input class="form-control" type="text" id="parking" name="parking"
-                                                        value="{{ $property_data['parking'] }}" placeholder="Enter Parkings" />
-                                                </div>
-                                                
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Building Age</label>
-                                                    <input class="form-control" type="text" id="building_age" name="building_age" value="{{ $property_data['building_age'] }}"
-                                                        placeholder="Enter Building Age" />
-                                                </div>
-                                                
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Furnished?</label>
-                                                    <select name="furnished" class="form-control">
-                                                        <option {{ $property_data['furnished']  == 'furnished' ? 'selected' : '' }} value="furnished">Furnished</option>
-                                                        <option {{ $property_data['furnished']  == 'unfurnished' ? 'selected' : '' }} value="unfurnished">Unfurnished</option>
-                                                        <option {{ $property_data['furnished']  == 'semi-furnished' ? 'selected' : '' }} value="semi-furnished">Semi Furnished</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Availability Date</label>
-                                                    <input class="form-control" type="date" id="" name="availability_date"
-                                                        value="{{ $property_data['availability_date'] }}" placeholder="availability date" />
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="card mb-4">
-                                        <h5 class="card-header">Location</h5>
-                                        <!-- Account -->
-
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="mb-3 col-md-12">
-                                                    <textarea style="height:150px" class="form-control" type="text"
-                                                        id="location" name="location" value="{{ $property_data['location'] }}"
-                                                        placeholder="Enter Address">{{ $property_data['location'] }}</textarea>
-                                                </div>
-
-                                                <div class="mb-3 col-md-12">
-                                                    <label for="property_name" class="form-label">Landmark</label>
-                                                    <input class="form-control" type="text" id="" name="landmark"
-                                                        value="{{ $property_data['landmark'] }}" placeholder="Enter Landmark" />
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="mb-3 col-md-4">
+                                                        <label for="name" class="form-label">Category Name</label>
+                                                        <input class="form-control" type="text" id="name"
+                                                            name="name" value="{{ $category_data['name'] }}"
+                                                            placeholder="Enter Catgeory Name" />
+                                                    </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="card mb-4">
-                                        <h5 class="card-header">Property Details</h5>
-                                        <!-- Account -->
 
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="mb-3 col-md-12">
-                                                    <textarea style="height:150px" class="form-control" type="text"
-                                                        id="property_details" name="property_details" value=""
-                                                        placeholder="Enter Property Details">{{ $property_data['property_details'] }}</textarea>
+                                        <div class="card mb-4">
+                                            <h5 class="card-header">Other Details</h5>
+                                            <!-- Account -->
+
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="mb-3 col-md-12">
+                                                        <input class="form-control" type="text" id="short_desc" name="short_desc"
+                                                            value="{{ $category_data['short_desc'] }}" placeholder="Enter Short Description" />
+                                                    </div>
+
+                                                    <div class="mb-3 col-md-12">
+                                                        <textarea style="height:150px" class="form-control" type="text"
+                                                            id="long_desc" name="long_desc" value="{{ $category_data['long_desc'] }}"
+                                                            placeholder="Enter Long Description">{{ $category_data['long_desc'] }}</textarea>
+                                                    </div>
+
+                                                    
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="row">
-                                        <div class="mb-3 col-md-4">
-                                            <button class="btn btn-primary btn-lg" type="submit" name="id">Edit Property</button>
+                                        <div class="row">
+                                            <div class="mb-3 col-md-4">
+                                                <button class="btn btn-primary btn-lg" type="submit"
+                                                    name="submitBtn" id="submitBtn">Edit Catgeory</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -198,17 +114,21 @@
     
 
 
-    $('#editCommercialProperty').on('submit', function(e) {
+    $('#editCategory').on('submit', function(e) {
         e.preventDefault();
-        axios.post(`${url}/admin/commercial/edit/{{ $property_data['id'] }}`, new FormData(this)).then(function(response) {
+        var btn_old_text = $('#submitBtn').text();
+        $('#submitBtn').text('Please Wait...');
+        axios.post(`${url}/admin/category/edit/{{ $category_data['category_uid'] }}`, new FormData(this)).then(function(response) {
             // handle success
+            $('#submitBtn').text(btn_old_text);
             show_Toaster(response.data.message, response.data.type)
             if (response.data.type === 'success') {
                 setTimeout(() => {
-                    window.location.href = `${url}/admin/commercial/all`;
+                    window.location.href = `${url}/admin/category/all`;
                 }, 500);
             }
         }).catch(function(err) {
+            $('#submitBtn').text(btn_old_text);
             show_Toaster(err.response.data.message, 'error')
         })
     });

@@ -60,7 +60,6 @@
                                             <th>Category Name</th>
                                             <th>Status</th>
                                             <th>Created at</th>
-                                            <th>Assets Actions</th>
                                             <th>Edit Actions</th>
                                             <th>Update Status Actions</th>
                                         </tr>
@@ -82,16 +81,12 @@
                                             </td>
                                             <td>{{ date('D, M Y',strtotime($singledata->created_at)) }}</td>
                                             <td>
-                                                <a class="btn btn-primary text-white btn-sm" onclick="UpdateImageModal('{{ $singledata->category_uid }}')"
-                                                    title="Edit Client Details">Add New Image/Video</a>
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-primary text-white btn-sm" href="{{ env('APP_URL').'/admin/category/edit/'.$singledata['id'] }}"
+                                                <a class="btn btn-primary text-white btn-sm" href="{{ env('APP_URL').'/admin/category/edit/'.$singledata->category_uid }}"
                                                     title="Edit Client Details">Edit</a>
                                             </td>
                                             <td>
                                             <a class="btn btn-primary text-white btn-sm" onclick="deleteCategory('{{ $singledata->category_uid }}')"
-                                                title="Delete Client Data">Update Status</a>
+                                                title="Update Category Status">Update Status</a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -118,44 +113,6 @@
     </div>
     <!-- / Layout wrapper -->
 
-    <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel1"> Assets</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-
-                        <div class="row">
-                            <form id="addNewAssets">
-                                @csrf
-                                <input class="form-control" type="hidden" id="category_uid" name="category_uid" />
-                                <div class="mb-3 col-md-6">
-                                    <label for="email" class="form-label">Add New Assets</label>
-                                    <input class="form-control" type="file" id="category_assets[]" name="category_assets[]" multiple />
-                                </div>
-                            
-                                <div class="mb-3 col-md-12">
-                                    <button type="submit" class="btn btn-primary" id="addNewAssetsID" name="addNewAssetsID">Save Package</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="row">
-                            <h4>All Assets</h4>
-                            <div id="assetsData" style="height: 300px;overflow: auto;display: flex;flex-direction: row;width: 100%;flex-wrap: wrap;"></div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" onclick="closeModal()">
-                            Close
-                        </button>
-                    </div>
-            </div>
-            
-        </div>
-    </div>
     </div>
 
     <style>
@@ -215,58 +172,6 @@
 
     $(document).ready(function() {
         $('#table_id').DataTable();
-    });
-
-
-    function UpdateImageModal(category_uid) {
-
-        // Call Ajax and populate Data
-        axios.get(`${url}/admin/category/assets/get/${category_uid}`).then(function(response) {
-            // handle success
-            $('#assetsData').html(response.data.html);
-            if (response.data.type === 'error') {
-                show_Toaster(response.data.message, response.data.type)
-            }
-        }).catch(function(err) {
-            show_Toaster(err.response.data.message, 'error')
-        })
-
-        $('#category_uid').val(category_uid)
-        $('#addNewAssetsID').val(category_uid)
-        $('#basicModal').modal('show');
-    }
-
-    function deleteAsset(category_uid, key){
-        axios.post(`${url}/admin/category/deleteAssets/${category_uid}/${key}`).then(function(response) {
-            // handle success
-            show_Toaster(response.data.message, response.data.type)
-            if (response.data.type === 'success') {
-                UpdateImageModal(category_uid)
-            }
-        }).catch(function(err) {
-            show_Toaster(err.response.data.message, 'error')
-        })
-    }
-
-    function showAddUser() {
-        $('#process').val('add');
-        $('#basicModal').modal('show');
-    }
-
-
-    $('#addNewAssets').submit(function(e) {
-        e.preventDefault();
-        var formdata = new FormData(this);
-        axios.post(`${url}/admin/category/addAssets`, formdata).then(function(response) {
-            // handle success
-            $("#addNewAssets")[0].reset();
-            show_Toaster(response.data.message, response.data.type)
-            if (response.data.type === 'success') {
-                UpdateImageModal($('#category_uid').val())
-            }
-        }).catch(function(err) {
-            show_Toaster(err.response.data.message, 'error')
-        })
     });
 
     function deleteCategory(category_uid) {

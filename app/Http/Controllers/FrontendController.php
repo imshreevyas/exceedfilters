@@ -39,6 +39,26 @@ class FrontendController extends Controller
         return view('frontend.views.about-us', $this->data);
     }
 
+    public function contactus(){
+        $this->data['settings']['page'] = 'contact-us';
+        return view('frontend.views.contact-us', $this->data);
+    }
+
+    public function cost_saving_calculator(){
+        $this->data['settings']['page'] = 'cost-saving-calculator';
+        return view('frontend.views.cost-saving-calculator', $this->data);
+    }
+
+    public function product_details($product_uid = 0){
+        if($product_uid == 0){
+            return view('frontend.views.error.404');    
+        }
+
+        $this->data['settings']['page'] = 'product-details';
+        $this->data['product'] = Products::where('product_uid',$product_uid)->first();
+        return view('frontend.views.product-details', $this->data);
+    }
+
     public function commercial_listing(){
         $data['settings'] = $this->settings;
         $data['properties'] = Commercial::where('status', '1')->orderBy('id', 'DESC')->paginate(15);

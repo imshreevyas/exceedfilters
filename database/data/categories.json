@@ -1,17 +1,32 @@
 [
     {
-        "name": "Commercial Air Filters",
-        "long_desc": "Commercial Air Filters",
-        "short_desc": "Commercial Air Filters"
+        "name": "Pleated Filters",
+        "long_desc": "MERV 8 to MERV 13",
+        "short_desc": "MERV 8 to MERV 13"
     },
     {
-        "name": "Residential Air Filters",
-        "long_desc": "Residential Air Filters",
-        "short_desc": "Residential Air Filters"
+        "name": "Minipleat Filters",
+        "long_desc": "MERV 13 to HEPA",
+        "short_desc": "MERV 13 to HEPA"
     },
     {
-        "name": "Face Mask",
-        "long_desc": "Face Mask",
-        "short_desc": "Face Mask"
+        "name": "Rigid Cell Filters",
+        "long_desc": "MERV 11 to 15",
+        "short_desc": "MERV 11 to 15"
+    },
+    {
+        "name": "Pocket Bag Filters",
+        "long_desc": "MERV 11 to 15",
+        "short_desc": "MERV 11 to 15"
+    },
+    {
+        "name": "V Cell Air Filters",
+        "long_desc": "MERV 13 to HEPA",
+        "short_desc": "MERV 13 to HEPA"
+    },
+    {
+        "name": "Aluminum Separator Filters",
+        "long_desc": "MERV 13 to HEPA",
+        "short_desc": "MERV 13 to HEPA"
     }
 ]

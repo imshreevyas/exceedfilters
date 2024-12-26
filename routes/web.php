@@ -22,10 +22,9 @@ use App\Http\Controllers\GeneralSettingController;
 // Frontend Pages Get Request
 Route::get('/',[FrontendController::class, 'index']);
 Route::get('/about-us',[FrontendController::class, 'aboutus']);
-Route::get('/products',[FrontendController::class, 'products']);
-Route::get('/product-details/{product_id}',[FrontendController::class, 'product-details']);
-Route::get('/cost-saving-calculation',[FrontendController::class, 'cost-saving-calculator']);
-Route::get('/contact-us',[FrontendController::class, 'contact-us']);
+Route::get('/product-details/{product_uid}',[FrontendController::class, 'product_details']);
+Route::get('/cost-saving-calculation',[FrontendController::class, 'cost_saving_calculator']);
+Route::get('/contact-us',[FrontendController::class, 'contactus']);
 
 // Frontend Pages Post Request.
 Route::post('/product-enquiry',[FrontendController::class, 'submit-enquiry-form']);
@@ -45,16 +44,16 @@ Route::prefix('admin')->group(function () {
     Route::get('/generate-password/{newpass}',[AdminController::class,'generatePassword'])->name('generatePassword');
 
     // Products Routes
-    Route::get('/products/all',[ProductController::class,'index'])->name('products');
+    Route::get('/product/all',[ProductController::class,'index'])->name('productsAll');
     Route::get('/product/add',[ProductController::class,'create'])->name('productAdd');
-    Route::get('/product/edit/{id}',[ProductController::class,'edit'])->name('productEdit');
-    Route::get('/product/assets/get/{product_id}',[ProductController::class,'getAssets'])->name('productGetAssets');
+    Route::get('/product/edit/{product_uid}',[ProductController::class,'edit'])->name('productEdit');
+    Route::get('/product/assets/get/{product_uid}',[ProductController::class,'getAssets'])->name('productGetAssets');
+    Route::get('/product/sepcifications/get/{product_uid}',[ProductController::class,'getSepcifications'])->name('productGetSepcifications');
 
     // Category Routes
     Route::get('/category/all',[CategoryController::class,'index'])->name('categories');
     Route::get('/category/add',[CategoryController::class,'create'])->name('categoryAdd');
-    Route::get('/category/edit/{id}',[CategoryController::class,'edit'])->name('categoryEdit');
-    Route::get('/category/assets/get/{category_id}',[CategoryController::class,'getAssets'])->name('categoryGetAssets');
+    Route::get('/category/edit/{category_uid}',[CategoryController::class,'edit'])->name('categoryEdit');
 
 
     // Post Routes
@@ -62,15 +61,13 @@ Route::prefix('admin')->group(function () {
     
     Route::post('/product/add',[ProductController::class,'store'])->name('productAddPost');
     Route::post('/product/edit/{id}',[ProductController::class,'update'])->name('productEdit');
-    Route::post('/product/delete/{property_uid}',[ProductController::class,'delete'])->name('productEdit');
+    Route::post('/product/delete/{product_uid}',[ProductController::class,'delete'])->name('productEdit');
     Route::post('/product/addAssets',[ProductController::class,'addAssets'])->name('productAddAssets');
-    Route::post('/product/deleteAssets/{property_uid}/{key}',[ProductController::class,'deleteAssets'])->name('productDeleteAssets');
+    Route::post('/product/deleteAssets/{product_uid}/{key}/{type}',[ProductController::class,'deleteAssets'])->name('productDeleteAssets');
     
     Route::post('/category/add',[CategoryController::class,'store'])->name('categoryAddPost');
-    Route::post('/category/edit/{id}',[CategoryController::class,'update'])->name('categoryEdit');
-    Route::post('/category/delete/{property_uid}',[CategoryController::class,'delete'])->name('categoryDelete');
-    Route::post('/category/addAssets',[CategoryController::class,'addAssets'])->name('categoryAddAssets');
-    Route::post('/category/deleteAssets/{property_uid}/{key}',[CategoryController::class,'deleteAssets'])->name('categoryDeleteAssets');
+    Route::post('/category/edit/{category_uid}',[CategoryController::class,'update'])->name('categoryEdit');
+    Route::post('/category/delete/{category_uid}',[CategoryController::class,'delete'])->name('categoryDelete');
     
     
     Route::post('/settings/all/',[AdminController::class,'settingEdit'])->name('settingEdit');
@@ -78,7 +75,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/settings/delete/{id}',[GeneralSettingController::class,'destroy'])->name('settingEdit');
     Route::post('/settings/add',[GeneralSettingController::class,'store'])->name('settingAdd');
     
-    Route::post('/account/{id}',[AdminController::class,'adminAccountUpdate'])->name('adminDashboard');
+    Route::post('/account/{id}',[AdminController::class,'adminAccountUpdate'])->name('adminAccountUpdate');
     Route::post('/logout',[AdminController::class,'logout'])->name('logout');
     
 });

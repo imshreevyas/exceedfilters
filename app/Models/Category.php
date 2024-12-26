@@ -13,7 +13,6 @@ class Category extends Model
         'name',
         'long_desc',
         'short_desc',
-        'category_banner',
         'status',
         'created_at',
         'updated_at'
