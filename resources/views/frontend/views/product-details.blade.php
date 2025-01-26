@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- MAIN CONTENT -->
- 
+
 <!-- MAIN CONTENT -->
 
 @stop

@@ -42,16 +42,10 @@
                     <!-- Content -->
 
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Product /</span> Manage</h4>
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Product /</span> Enquiries</h4>
                         <div class="card">
                             <div style="display: flex;">
-                                <h5 class="card-header">Manage Product</h5>
-                                <h5 class="card-header">
-                                    <a type="button" href="{{ url('admin/product/add') }}"
-                                        class="btn btn-outline-secondary btn-small text-red"
-                                        title="Edit Client Details">Add
-                                        New</a>
-                                </h5>
+                                <h5 class="card-header">Manage Product Enquiries</h5>
                             </div>
                             <div class="table table-responsive">
                                 <table id="table_id" class="display">
@@ -60,52 +54,30 @@
                                             <th>Sr No.</th>
                                             <th>Product Name</th>
                                             <th>Category Name</th>
-                                            <th>Status</th>
-                                            <th>Created at</th>
-                                            <th>Images Assets Actions</th>
-                                            <th>Specification Assets Actions</th>
-                                            <th>Edit Actions</th>
-                                            <th>Update Status Actions</th>
+                                            <th>User Name</th>
+                                            <th>User Emailid</th>
+                                            <th>Message</th>
+                                            <th>Created Date</th>
                                         </tr>
                                     </thead>
                                     <tbody class="table-border-bottom-0">
                                         @php($i = 1)
-                                        @foreach ($products as $singledata)
+                                        @foreach ($productEnquiry as $singledata)
                                         <tr>
                                             <td>{{ $i++; }}</td>
                                             <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-                                                {{ $singledata->product_name }} </td>
-                                            <td>{{ $singledata->category->name}}</td>
-                                            <td id="alert-{{ $singledata['product_uid'] }}">
-                                                @if($singledata->status == '1')
-                                                <span class="btn alert-success btn-sm">Active</span>
-                                                @else
-                                                <span class='btn alert-danger btn-sm'>Deactivated</span>
-                                                @endif
-                                        
-                                            </td>
+                                                {{ $singledata->product->product_name }} </td>
+                                            <td>{{ $singledata->category->name }}</td>
+                                            <td>{{ $singledata->name }}</td>
+                                            <td>{{ $singledata->email }}</td>
+                                            <td>{{ $singledata->message }}</td>
                                             <td>{{ date('D, M Y',strtotime($singledata->created_at)) }}</td>
-                                            <td>
-                                                <a class="btn btn-primary text-white btn-sm" onclick="UpdateImageModal('{{ $singledata['product_uid'] }}')"
-                                                    title="Edit Client Details">Add New Product Image</a>
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-primary text-white btn-sm" onclick="UpdateSpecificationModal('{{ $singledata['product_uid'] }}')"
-                                                    title="Edit Client Details">Add New Specification PDF</a>
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-primary text-white btn-sm" href="{{ env('APP_URL').'/admin/product/edit/'.$singledata['product_uid'] }}"
-                                                    title="Edit Client Details">Edit</a>
-                                            </td>
-                                            <td>
-                                            <a class="btn btn-primary text-white btn-sm" onclick="deleteProduct('{{ $singledata['product_uid'] }}');"
-                                                title="Delete Client Data">Update Status</a>
-                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                     <tfoot>
                                         <!-- Pagination Starts -->
+
                                         <!-- Pagination Ends -->
                                     </tfoot>
                                 </table>

@@ -12,18 +12,16 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
+    public function index(){
         $data['products'] = Product::orderBy('id','desc')->with('category')->get();
-        $data['page_type'] = 'productsAll'; 
+        $data['page_type'] = 'productAll'; 
         return view('admin.product.manageProducts', $data);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
+    public function create(){
         $data['page_type'] = 'productAdd'; 
         $data['categories'] = Category::where('status','1')->orderBy('id','desc')->get();
         return view('admin.product.addProduct', $data);
@@ -32,8 +30,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         // Validation
         $validatedData = $request->validate([
             'category_uid' => 'required',
@@ -68,7 +65,7 @@ class ProductController extends Controller
             
             $assetPath = 'storage/app/' . $path;
             $product_specification_assets[] = [
-                'original_name' => $asset->getClientOriginalName(),
+                'original_filename' => $asset->getClientOriginalName(),
                 'path' => $assetPath,
             ];            
         }
@@ -91,49 +88,29 @@ class ProductController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Product $product)
-    {
-        
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
-    {
+    public function edit($product_uid){
         $data['page_type'] = 'productEdit'; 
-        $data['product_data'] = Product::where('id', $id)->first(); 
+        $data['categories'] = Category::where('status','1')->orderBy('id','desc')->get();
+        $data['product'] = Product::where('product_uid', $product_uid)->first(); 
         return view('admin.product.editProduct', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $product_uid){
         // Validation
         $validatedData = $request->validate([
+            'category_uid' => 'required',
             'product_name' => 'required|string|max:255',
-            'product_type' => 'required|string|max:255',
-            'sale_price' => 'required',
-            'carpet' => 'nullable',
-            'heights' => 'nullable',
-            'frontage' => 'nullable',
-            'self_contained' => 'nullable',
-            'building_name' => 'nullable|string|max:255',
-            'location' => 'nullable|string|max:255',
-            'availability_date' => 'nullable|date',
-            'parking' => 'nullable|string|max:255',
-            'furnished' => 'nullable|string|in:furnished,unfurnished,semi-furnished',
-            'building_age' => 'nullable',
-            'landmark' => 'nullable|string|max:255',
-            'product_details' => 'required|string',
+            'long_desc' => 'required',
         ]);
 
-        $update = Product::whereId($id)->update($validatedData);
+        $update = Product::where('product_uid', $product_uid)->update($validatedData);
         if($update){
             return response()->json([
                 'message'=>'Product Updated Successfully!',
@@ -161,7 +138,7 @@ class ProductController extends Controller
                 $html = '';
                 foreach($assetData as $key => $singleData){
                     $assets = "<img class='mb-3' src='".env('STORAGE_URL').$singleData['path']."' alt='' style='height: 100px;border: 1px solid #000;'>";
-                    $html .= "<hr><div class='mb-3' style='display:flex;flex-direction: column;'>$assets<button onclick=deleteAsset('$product_uid','$key','product_assets') class='btn btn-danger' style='width:max-content'>delete Asset</button></div>";
+                    $html .= "<hr><div class='mb-3' style='display:flex;flex-direction: column;'>$assets<button onclick=deleteAsset('$product_uid','$key') class='btn btn-danger' style='width:max-content'>delete Asset</button></div>";
                 }
 
                 return response()->json([
@@ -197,8 +174,9 @@ class ProductController extends Controller
 
                 $html = '';
                 foreach($assetData as $key => $singleData){
-                    $assets = "<iframe  class='mb-3' src='".env('STORAGE_URL').$singleData['path']."' alt='' style='height: 100px;border: 1px solid #000;'></iframe>";
-                    $html .= "<hr><div class='mb-3' style='display:flex;flex-direction: column;'>$assets<button onclick=deleteAsset('$product_uid','$key','product_specification_assets') class='btn btn-danger' style='width:max-content'>Delete Specification</button></div>";
+                    $original_filename = $singleData['original_filename'];
+                    $assets = "<iframe  class='mb-3' src='".env('STORAGE_URL').$singleData['path']."#zoom=150' alt='' style='height: 120px;width:auto;border: 1px solid #000;'></iframe>";
+                    $html .= "<hr><div class='mb-3' style='display:flex;flex-direction: column;width: 180px;'>$assets <span style='width:80px'><b>NAME:</b> $original_filename</span><button onclick=deleteSpecificationAsset('$product_uid','$key') class='btn btn-danger' style='width:max-content'>Delete Specification</button></div>";
                 }
 
                 return response()->json([
@@ -276,8 +254,7 @@ class ProductController extends Controller
         }
     }
 
-
-    public function addSpecifications(Request $request){
+    public function addSpecification(Request $request){
 
         $validatedData = $request->validate([
             'product_uid' => 'required|string',
@@ -293,6 +270,7 @@ class ProductController extends Controller
 
 
         $productDetails = Product::select('product_specification_assets')->where('product_uid', $validatedData['product_uid'])->first();
+        
         if($productDetails && isset($productDetails->product_specification_assets)){
             $assetsArr = json_decode($productDetails->product_specification_assets, true);
             
@@ -306,15 +284,17 @@ class ProductController extends Controller
                 
                 $assetPath = 'storage/app/' . $path;
                 $assets[] = [
+                    'original_filename' => $asset->getClientOriginalName(),
                     'path' => $assetPath,
                 ];            
             }
     
             $product_specification_assets = json_encode($assets);
+            
             $update = Product::where('product_uid',$validatedData['product_uid'])->update(['product_specification_assets' => $product_specification_assets]);
             if($update){
                 return response()->json([
-                    'message'=>'Product  Assets Updated Successfully!',
+                    'message'=>'Product Specification Updated Successfully!',
                     'type'=>'success'
                 ]);
             }else{
@@ -334,8 +314,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function delete(Request $request, $product_uid)
-    {
+    public function delete(Request $request, $product_uid){
         $this->checkUserType($request);
         $product = Product::where('product_uid' , $product_uid)->first();
 
@@ -368,15 +347,15 @@ class ProductController extends Controller
         }
     }
 
-    public function deleteAssets(Request $request, $product_uid, $key, $type){
+    public function deleteAssets(Request $request, $product_uid, $key){
         $this->checkUserType($request);
         // remove image from product DB
 
-        $productDetails = Product::select($type)->where('product_uid', $product_uid)->first();
+        $productDetails = Product::select('product_assets')->where('product_uid', $product_uid)->first();
         
-        if($productDetails){
+        if($productDetails && isset($productDetails->product_assets)){
 
-            $json_data = $productDetails->$type;
+            $json_data = $productDetails->product_assets;
             $assetsArr = json_decode($json_data, true);
 
             if(isset($assetsArr[$key])){
@@ -386,8 +365,8 @@ class ProductController extends Controller
                 if ($this->deleteImage($imagePath)) {
 
                     unset($assetsArr[$key]);
-                    $newArr = json_encode($assetsArr);
-                    Product::where('product_uid', $product_uid)->update([$type => $newArr]);
+                    $newArr = array_values($assetsArr);
+                    Product::where('product_uid', $product_uid)->update(['product_assets' => json_encode($newArr)]);
 
                     return response()->json([
                         'message'=>'Product  Asset deleted Successfully!',
@@ -408,8 +387,47 @@ class ProductController extends Controller
         }
     }
 
-    public function deleteImage($imagePath)
-    {
+    public function deleteSpecifications(Request $request, $product_uid, $key){
+        $this->checkUserType($request);
+        // remove image from product DB
+
+        $productDetails = Product::select('product_specification_assets')->where('product_uid', $product_uid)->first();
+        
+        if($productDetails && isset($productDetails->product_specification_assets)){
+
+            $json_data = $productDetails->product_specification_assets;
+            $assetsArr = json_decode($json_data, true);
+
+            if(isset($assetsArr[$key])){
+                $imagePath = $assetsArr[$key]['path']; // Specify the image path
+
+               
+                if ($this->deleteImage($imagePath)) {
+
+                    unset($assetsArr[$key]);
+                    $newArr = array_values($assetsArr);
+                    Product::where('product_uid', $product_uid)->update(['product_specification_assets' => json_encode($newArr)]);
+
+                    return response()->json([
+                        'message'=>'Product Specification Assets deleted Successfully!',
+                        'type'=>'success'
+                    ]);
+                }else {
+                    return response()->json([
+                        'message'=>'Something went wrong, try again later',
+                        'type'=>'error'
+                    ]);
+                }
+            }else {
+                return response()->json([
+                    'message'=>'Something went wrong, try again later.',
+                    'type'=>'error'
+                ]);
+            }
+        }
+    }
+
+    public function deleteImage($imagePath){
         if (file_exists($imagePath)) {
             unlink($imagePath);
             return true;

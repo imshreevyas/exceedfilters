@@ -88,7 +88,7 @@ class AdminController extends Controller
     public function checkUserType(Request $request){
         // Check User Type and Redirect
         if($request->session()->has('user_type') && $request->session()->get('user_type') != 'admin')
-          return redirect()->route('adminlogin');
+          return redirect()->route('adminLogin');
     }
 
 
@@ -97,6 +97,6 @@ class AdminController extends Controller
     }
 
     public function logout(){
-        return redirect()->route('adminlogin');
+        return redirect()->route('adminLogin');
     }
 }

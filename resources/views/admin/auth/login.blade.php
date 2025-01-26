@@ -84,6 +84,7 @@
                 }, 500);
             }
         }).catch(function(err) {
+            console.log(err);
             show_Toaster(err.response.data.message, 'error')
         })
     });

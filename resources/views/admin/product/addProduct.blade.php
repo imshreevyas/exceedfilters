@@ -7,7 +7,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Add Property</title>
+    <title>Add Products</title>
 
     <meta name="description" content="" />
     <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
@@ -45,7 +45,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <form id="addCommercialProperty">
+                                <form id="addProduct">
                                     <div class="card mb-4">
                                         <h5 class="card-header">Product Details</h5>
                                         <!-- Account -->
@@ -157,7 +157,7 @@
         console.error( error );
     } );
 
-    $('#addCommercialProperty').on('submit', function(e) {
+    $('#addProduct').on('submit', function(e) {
         e.preventDefault();
         axios.post(`${url}/admin/product/add`, new FormData(this)).then(function(response) {
             // handle success

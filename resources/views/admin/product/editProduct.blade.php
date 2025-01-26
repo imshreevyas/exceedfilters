@@ -7,7 +7,8 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Add Property</title>
+    <title>Edit Product</title>
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
 
     <meta name="description" content="" />
 
@@ -35,132 +36,50 @@
                     <!-- Content -->
 
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Commercial Property /</span>
-                            Edit Property</h4>
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Products /</span>
+                            Edit Product</h4>
 
                         <div class="row">
                             <div class="col-md-12">
-                                <form id="editCommercialProperty">
+                                <form id="editProduct">
                                     <div class="card mb-4">
-                                        <h5 class="card-header">Property Details</h5>
+                                        <h5 class="card-header">Product Details</h5>
                                         <!-- Account -->
 
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Property Name</label>
-                                                    <input class="form-control" type="text" id="property_name"
-                                                        name="property_name" value="{{ $property_data['property_name'] }}"
-                                                        placeholder="Enter Property Name" />
-                                                </div>
-
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Property type</label>
-                                                    <select name="property_type" class="form-control">
-                                                        <option {{ $property_data['furnished']  == 'Rental' ? 'selected' : '' }} value="Rental">Rental</option>
-                                                        <option {{ $property_data['furnished']  == 'Sale' ? 'selected' : '' }} value="Sale">Sale</option>
+                                                    <label for="product_name" class="form-label">Select Category</label>
+                                                    <select name="category_uid" class="form-control">
+                                                        @if(count($categories) > 0)
+                                                            @foreach($categories as $category)
+                                                            <option value="{{ $category['category_uid'] }}" {{ $category['category_uid'] == $product->category_uid ? 'selected' : '' }}>{{ $category['name'] }}</option>
+                                                            @endforeach
+                                                        @endif
                                                     </select>
                                                 </div>
 
                                                 <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Building Name</label>
-                                                    <input class="form-control" type="text" id="building_name"
-                                                        name="building_name" value="{{ $property_data['building_name'] }}" placeholder="Enter Building Name" />
-                                                </div>
-                                                
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Selling Price</label>
-                                                    <input class="form-control" type="text" id="sale_price" name="sale_price" value="{{ $property_data['sale_price'] }}"
-                                                        placeholder="Enter Selling Price" />
+                                                    <label for="product_name" class="form-label">Product Name</label>
+                                                    <input class="form-control" type="text" id="product_name"
+                                                        name="product_name" value="{{ $product->product_name }}"
+                                                        placeholder="Enter Product Name" />
                                                 </div>
 
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Carpet area</label>
-                                                    <input class="form-control" type="text" id="carpet" name="carpet" value="{{ $property_data['carpet'] }}"
-                                                        placeholder="Enter Carpet Area" />
-                                                </div>
-
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Height</label>
-                                                    <input class="form-control" type="text" id="heights" name="heights"
-                                                        value="{{ $property_data['heights'] }}" placeholder="Enter Height" />
-                                                </div>
-
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Frontage</label>
-                                                    <input class="form-control" type="text" id="frontage" name="frontage" value="{{ $property_data['frontage'] }}"
-                                                        placeholder="Enter Frontage" />
-                                                </div>
-                                                
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Self Contained</label>
-                                                    <input class="form-control" type="text" id="self_contained" value="{{ $property_data['self_contained'] }}"
-                                                        name="self_contained" placeholder="Enter Self Contained" />
-                                                </div>
-
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Car Parkings</label>
-                                                    <input class="form-control" type="text" id="parking" name="parking"
-                                                        value="{{ $property_data['parking'] }}" placeholder="Enter Parkings" />
-                                                </div>
-                                                
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Building Age</label>
-                                                    <input class="form-control" type="text" id="building_age" name="building_age" value="{{ $property_data['building_age'] }}"
-                                                        placeholder="Enter Building Age" />
-                                                </div>
-                                                
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Furnished?</label>
-                                                    <select name="furnished" class="form-control">
-                                                        <option {{ $property_data['furnished']  == 'furnished' ? 'selected' : '' }} value="furnished">Furnished</option>
-                                                        <option {{ $property_data['furnished']  == 'unfurnished' ? 'selected' : '' }} value="unfurnished">Unfurnished</option>
-                                                        <option {{ $property_data['furnished']  == 'semi-furnished' ? 'selected' : '' }} value="semi-furnished">Semi Furnished</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="mb-3 col-md-4">
-                                                    <label for="property_name" class="form-label">Availability Date</label>
-                                                    <input class="form-control" type="date" id="" name="availability_date"
-                                                        value="{{ $property_data['availability_date'] }}" placeholder="availability date" />
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="card mb-4">
-                                        <h5 class="card-header">Location</h5>
-                                        <!-- Account -->
-
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="mb-3 col-md-12">
-                                                    <textarea style="height:150px" class="form-control" type="text"
-                                                        id="location" name="location" value="{{ $property_data['location'] }}"
-                                                        placeholder="Enter Address">{{ $property_data['location'] }}</textarea>
-                                                </div>
-
-                                                <div class="mb-3 col-md-12">
-                                                    <label for="property_name" class="form-label">Landmark</label>
-                                                    <input class="form-control" type="text" id="" name="landmark"
-                                                        value="{{ $property_data['landmark'] }}" placeholder="Enter Landmark" />
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="card mb-4">
-                                        <h5 class="card-header">Property Details</h5>
+                                        <h5 class="card-header">Product Description</h5>
                                         <!-- Account -->
 
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="mb-3 col-md-12">
+                                                <div class="mb-3 col-md-12" id="editor">
                                                     <textarea style="height:150px" class="form-control" type="text"
-                                                        id="property_details" name="property_details" value=""
-                                                        placeholder="Enter Property Details">{{ $property_data['property_details'] }}</textarea>
+                                                        id="long_desc" name="long_desc" value="{{ $product->long_desc }}"
+                                                        placeholder="Enter Product Description">{{ $product->long_desc }}</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -168,7 +87,8 @@
 
                                     <div class="row">
                                         <div class="mb-3 col-md-4">
-                                            <button class="btn btn-primary btn-lg" type="submit" name="id">Edit Property</button>
+                                            <button class="btn btn-primary btn-lg" type="submit"
+                                                name="submitBtn">Edit Product</button>
                                         </div>
                                     </div>
                                 </form>
@@ -196,16 +116,20 @@
     @include('admin.include.footer')
     <script>
     
+    ClassicEditor
+    .create( document.querySelector( '#long_desc' ) )
+    .catch( error => {
+        console.error( error );
+    } );
 
-
-    $('#editCommercialProperty').on('submit', function(e) {
+    $('#editProduct').on('submit', function(e) {
         e.preventDefault();
-        axios.post(`${url}/admin/commercial/edit/{{ $property_data['id'] }}`, new FormData(this)).then(function(response) {
+        axios.post(`${url}/admin/product/edit/{{ $product['product_uid'] }}`, new FormData(this)).then(function(response) {
             // handle success
             show_Toaster(response.data.message, response.data.type)
             if (response.data.type === 'success') {
                 setTimeout(() => {
-                    window.location.href = `${url}/admin/commercial/all`;
+                    window.location.href = `${url}/admin/product/all`;
                 }, 500);
             }
         }).catch(function(err) {

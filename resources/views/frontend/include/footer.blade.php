@@ -12,11 +12,11 @@
                     </div>
                     <div class="col-lg-5">
                         <div class="footer-top-wrap">
-                            <p class="mb-30">We are digital agency that helps businesses develop immersive and engaging user experiences</p>
+                            <p class="mb-30">Need additional information on filter sizes, specifications, availability, or pricing?</p>
                             <a href="contact-us" class="btn">
                                 <span class="link-effect">
-                                    <span class="effect-1">LET'S TALK WITH US</span>
-                                    <span class="effect-1">LET'S TALK WITH US</span>
+                                    <span class="effect-1">GET IN TOUCH</span>
+                                    <span class="effect-1">GET IN TOUCH</span>
                                 </span>
                             </a>
                         </div>

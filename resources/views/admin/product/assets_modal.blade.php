@@ -9,7 +9,7 @@
                         <div class="modal-body">
 
                             <div class="row">
-                                <form class="addNewAssets">
+                                <form id="addNewAssets">
                                     @csrf
                                     <input class="form-control product_uid" type="hidden" id="product_uid" name="product_uid" />
                                     <div class="mb-3 col-md-6">

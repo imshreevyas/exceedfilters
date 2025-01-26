@@ -9,12 +9,12 @@
                         <div class="modal-body">
 
                             <div class="row">
-                                <form class="addNewAssets">
+                                <form id="addNewSpecification">
                                     @csrf
                                     <input class="form-control product_uid" type="hidden" id="product_uid" name="product_uid" />
                                     <div class="mb-3 col-md-6">
                                         <label for="email" class="form-label">Add New Assets</label>
-                                        <input class="form-control" type="file" id="product_assets[]" name="product_assets[]" multiple />
+                                        <input class="form-control" type="file" id="product_specification_assets[]" name="product_specification_assets[]" multiple />
                                     </div>
                                 
                                     <div class="mb-3 col-md-12">

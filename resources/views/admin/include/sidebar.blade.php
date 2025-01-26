@@ -50,13 +50,19 @@
         </li>
 
 
-        <li class="menu-item {{ $page_type == 'productAll' || $page_type == 'productAdd' || $page_type == 'productEdit' ?'open':'' }}">
+        <li class="menu-item {{ $page_type == 'productAll' || $page_type == 'productAdd' || $page_type == 'productEdit' || $page_type == 'productsEnquiryAll' ? 'open':'' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxs-home"></i>
                 <div data-i18n="Layouts">Products</div>
             </a>
 
             <ul class="menu-sub">
+
+                <li class="menu-item {{ $page_type == 'productsEnquiryAll' ? 'active':''}}">
+                    <a href="{{url('/admin/product/enquiries')}}" class="menu-link">
+                        <div data-i18n="Without menu">All Products Enquiries</div>
+                    </a>
+                </li>
 
                 <li class="menu-item {{ $page_type == 'productAll' ? 'active':''}}">
                     <a href="{{url('/admin/product/all')}}" class="menu-link">

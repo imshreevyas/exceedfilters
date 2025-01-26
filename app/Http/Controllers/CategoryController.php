@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $data['categories'] = Category::orderBy('id','desc')->get();
-        $data['page_type'] = 'CategoryAll'; 
+        $data['page_type'] = 'categoryAll'; 
         return view('admin.category.manageCategories', $data);
     }
 
@@ -25,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $data['page_type'] = 'CategoryAdd'; 
+        $data['page_type'] = 'categoryAdd'; 
         return view('admin.category.addCategory', $data);
     }
 
@@ -74,7 +74,7 @@ class CategoryController extends Controller
      */
     public function edit($category_uid)
     {
-        $data['page_type'] = 'CategoryEdit'; 
+        $data['page_type'] = 'categoryEdit'; 
         $data['category_data'] = Category::where('category_uid', $category_uid)->first(); 
         return view('admin.category.editCategory', $data);
     }

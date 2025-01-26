@@ -12,13 +12,8 @@
                     <li>
                         <a href="#">HOME</a>
                     </li>
-                    <li class="menu-item-has-children">
+                    <li>
                         <a href="#">PRODUCTS</a>
-                        <ul class="sub-menu">
-                            <li class="active"><a href="#">Air Filters</a></li>
-                            <li><a href="#">Mask Filters</a></li>
-                            <li><a href="#">Face Mask</a></li>
-                        </ul>
                     </li>
                     <li>
                         <a href="#">About Us</a>
@@ -98,11 +93,6 @@
                                                 <span class="effect-1">PRODUCTS</span>
                                             </span>
                                         </a>
-                                        <ul class="sub-menu">
-                                            <li class="active"><a href="index.html">Air Filters</a></li>
-                                            <li><a href="home-2.html">Mask Filters</a></li>
-                                            <li><a href="home-3.html">Face Mask</a></li>
-                                        </ul>
                                     </li>
                                     <li class="menu-item-has-children">
                                         <a href="#">
@@ -111,14 +101,9 @@
                                                 <span class="effect-1">ABOUT</span>
                                             </span>
                                         </a>
-                                        <ul class="sub-menu">
-                                            <li><a href="project.html">About Exceed</a></li>
-                                            <li><a href="project-2.html">Our Team</a></li>
-                                            <li><a href="project-3.html">Informational Resources</a></li>
-                                        </ul>
                                     </li>
                                     <li>
-                                        <a href="contact.html">
+                                        <a href="#">
                                             <span class="link-effect">
                                                 <span class="effect-1">CONTACT</span>
                                                 <span class="effect-1">CONTACT</span>

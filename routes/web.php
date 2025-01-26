@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\productController;
-use App\Http\Controllers\categoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GeneralSettingController;
+use App\Http\Controllers\ProductEnquiryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,26 +50,29 @@ Route::prefix('admin')->group(function () {
     Route::get('/product/edit/{product_uid}',[ProductController::class,'edit'])->name('productEdit');
     Route::get('/product/assets/get/{product_uid}',[ProductController::class,'getAssets'])->name('productGetAssets');
     Route::get('/product/sepcifications/get/{product_uid}',[ProductController::class,'getSepcifications'])->name('productGetSepcifications');
+    Route::get('/product/enquiries',[ProductEnquiryController::class,'index'])->name('productsEnquiryAll');
 
     // Category Routes
     Route::get('/category/all',[CategoryController::class,'index'])->name('categories');
     Route::get('/category/add',[CategoryController::class,'create'])->name('categoryAdd');
     Route::get('/category/edit/{category_uid}',[CategoryController::class,'edit'])->name('categoryEdit');
 
+    // Product Enquiries
 
     // Post Routes
     Route::post('/adminLoginPost',[AdminController::class,'adminLoginPost']);
-    
+
     Route::post('/product/add',[ProductController::class,'store'])->name('productAddPost');
-    Route::post('/product/edit/{id}',[ProductController::class,'update'])->name('productEdit');
+    Route::post('/product/edit/{product_uid}',[ProductController::class,'update'])->name('productEdit');
     Route::post('/product/delete/{product_uid}',[ProductController::class,'delete'])->name('productEdit');
     Route::post('/product/addAssets',[ProductController::class,'addAssets'])->name('productAddAssets');
-    Route::post('/product/deleteAssets/{product_uid}/{key}/{type}',[ProductController::class,'deleteAssets'])->name('productDeleteAssets');
+    Route::post('/product/addSpecification',[ProductController::class,'addSpecification'])->name('productAddSpecification');
+    Route::post('/product/deleteAssets/{product_uid}/{key}',[ProductController::class,'deleteAssets'])->name('productDeleteAssets');
+    Route::post('/product/deleteSpecifications/{product_uid}/{key}',[ProductController::class,'deleteSpecifications'])->name('productDeleteAssets');
     
     Route::post('/category/add',[CategoryController::class,'store'])->name('categoryAddPost');
     Route::post('/category/edit/{category_uid}',[CategoryController::class,'update'])->name('categoryEdit');
     Route::post('/category/delete/{category_uid}',[CategoryController::class,'delete'])->name('categoryDelete');
-    
     
     Route::post('/settings/all/',[AdminController::class,'settingEdit'])->name('settingEdit');
     Route::post('/settings/edit/{id}',[GeneralSettingController::class,'update'])->name('settingEdit');
@@ -76,6 +80,6 @@ Route::prefix('admin')->group(function () {
     Route::post('/settings/add',[GeneralSettingController::class,'store'])->name('settingAdd');
     
     Route::post('/account/{id}',[AdminController::class,'adminAccountUpdate'])->name('adminAccountUpdate');
-    Route::post('/logout',[AdminController::class,'logout'])->name('logout');
+    Route::get('/logout',[AdminController::class,'logout'])->name('logout');
     
 });

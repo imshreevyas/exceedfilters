@@ -28,6 +28,4 @@
             },
         }).showToast();
     }
-
-    
     </script>
