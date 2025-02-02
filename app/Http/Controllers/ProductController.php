@@ -36,7 +36,8 @@ class ProductController extends Controller
             'category_uid' => 'required',
             'product_name' => 'required|string|max:255',
             'long_desc' => 'required',
-            'product_assets.*' => 'file|mimes:jpeg,png,jpg,webp|max:20480',
+            'product_assets' => 'required',
+            'product_assets.*' => 'required|mimes:jpeg,png,jpg,webp|max:20480',
             'product_specification_assets.*' => 'file|mimes:pdf|max:20480',
         ]);
 

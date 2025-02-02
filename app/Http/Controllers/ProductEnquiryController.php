@@ -28,9 +28,33 @@ class ProductEnquiryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $send_details_on_email = FALSE)
     {
-        //
+        $validatedData = $request->validate([
+            'product_uid' => 'required',
+            'client_name' => 'required|string|max:255',
+            'client_email' => 'required|email:rfc,dns',
+            'message' => 'required',
+        ]);
+
+        $add = ProductEnquiry::create($validatedData);
+        if($add){
+
+            if($send_details_on_email){
+                // Send All Details on Email 
+            }
+
+
+            return response()->json([
+                'message'=>'Product Enquiry Sent Successfully!',
+                'type'=>'success'
+            ]);
+        }else{
+            return response()->json([
+                'message'=>'Something went wrong, try again later!',
+                'type'=>'error'
+            ]);
+        }
     }
 
     /**

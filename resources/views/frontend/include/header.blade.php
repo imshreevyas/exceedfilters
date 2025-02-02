@@ -5,7 +5,7 @@
         <div class="mobile-menu-area">
             <button class="menu-toggle"><i class="fas fa-times"></i></button>
             <div class="mobile-logo">
-                <a href="#"><img src="storage/app/admin/fav.png" alt="Ovation"></a>
+                <a href="#"><img src="env('STORAGE_URL').storage/app/admin/fav.png" alt="Ovation"></a>
             </div>
             <div class="mobile-menu">
                 <ul>
@@ -79,7 +79,7 @@
                         <div class="col-auto">
                             <div class="header-logo">
                                 <a href="/">
-                                    <img src="{{ $settings['logo'] }}" alt="logo">
+                                    <img src="{{ env('STORAGE_URL').$settings['logo'] }}" alt="logo">
                                 </a>
                             </div>
                         </div>

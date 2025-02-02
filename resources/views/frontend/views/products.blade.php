@@ -8,6 +8,7 @@
             </div>
         </div>
         <div class="row gy-40 justify-content-center">
+            
             <div class="col-lg-4 col-md-6">
                 <div class="blog-card style3">
                     <div class="blog-img">
@@ -23,81 +24,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-card style3">
-                    <div class="blog-img">
-                        <a href="#">
-                            <img src="https://exceedfilters.com/cdn/shop/files/merv8mockup_576x416.png?v=1614324256" alt="blog image">
-                        </a>
-                    </div>
-                    <div class="blog-content">
-                        <div class="post-meta-item blog-meta">
-                            <a href="#">MERV 8 Premium</a>
-                        </div>
-                        <h4 class="blog-title"><a href="#">With the MERV 8, capture large particles like dust, debris</a></h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-card style3">
-                    <div class="blog-img">
-                        <a href="#">
-                            <img src="https://exceedfilters.com/cdn/shop/files/merv8mockup_576x416.png?v=1614324256" alt="blog image">
-                        </a>
-                    </div>
-                    <div class="blog-content">
-                        <div class="post-meta-item blog-meta">
-                            <a href="#">MERV 8 Premium</a>
-                        </div>
-                        <h4 class="blog-title"><a href="#">With the MERV 8, capture large particles like dust, debris</a></h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-card style3">
-                    <div class="blog-img">
-                        <a href="#">
-                            <img src="https://exceedfilters.com/cdn/shop/files/merv8mockup_576x416.png?v=1614324256" alt="blog image">
-                        </a>
-                    </div>
-                    <div class="blog-content">
-                        <div class="post-meta-item blog-meta">
-                            <a href="#">MERV 8 Premium</a>
-                        </div>
-                        <h4 class="blog-title"><a href="#">With the MERV 8, capture large particles like dust, debris</a></h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-card style3">
-                    <div class="blog-img">
-                        <a href="#">
-                            <img src="https://exceedfilters.com/cdn/shop/files/merv8mockup_576x416.png?v=1614324256" alt="blog image">
-                        </a>
-                    </div>
-                    <div class="blog-content">
-                        <div class="post-meta-item blog-meta">
-                            <a href="#">MERV 8 Premium</a>
-                        </div>
-                        <h4 class="blog-title"><a href="#">With the MERV 8, capture large particles like dust, debris</a></h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-card style3">
-                    <div class="blog-img">
-                        <a href="#">
-                            <img src="https://exceedfilters.com/cdn/shop/files/merv8mockup_576x416.png?v=1614324256" alt="blog image">
-                        </a>
-                    </div>
-                    <div class="blog-content">
-                        <div class="post-meta-item blog-meta">
-                            <a href="#">MERV 8 Premium</a>
-                        </div>
-                        <h4 class="blog-title"><a href="#">With the MERV 8, capture large particles like dust, debris</a></h4>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 </section>
