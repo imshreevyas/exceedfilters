@@ -67,9 +67,9 @@
                                             <td>{{ $i++; }}</td>
                                             <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
                                                 {{ $singledata->product->product_name }} </td>
-                                            <td>{{ $singledata->category->name }}</td>
-                                            <td>{{ $singledata->name }}</td>
-                                            <td>{{ $singledata->email }}</td>
+                                            <td>{{ $singledata->product->category->name }}</td>
+                                            <td>{{ $singledata->client_name }}</td>
+                                            <td>{{ $singledata->client_email }}</td>
                                             <td>{{ $singledata->message }}</td>
                                             <td>{{ date('D, M Y',strtotime($singledata->created_at)) }}</td>
                                         </tr>

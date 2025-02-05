@@ -106,12 +106,12 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control style-border" name="client_name" id="client_name" placeholder="Full name*">
+                                        <input type="text" class="form-control style-border" name="client_name" id="client_name" placeholder="Full name (*Required)">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control style-border" name="client_email" id="client_email" placeholder="Email address*">
+                                        <input type="text" class="form-control style-border" name="client_email" id="client_email" placeholder="Email address (*Required)">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
@@ -132,7 +132,7 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <textarea name="message" placeholder="How Can We Help You*" id="message" class="form-control style-border"></textarea>
+                                        <textarea name="message" placeholder="How Can We Help You (*Required)" id="message" class="form-control style-border"></textarea>
                                     </div>
                                 </div>
                             </div>

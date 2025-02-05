@@ -27,6 +27,7 @@ Route::get('/product-details/{product_uid}',[FrontendController::class, 'product
 Route::get('/products-list',[FrontendController::class, 'products_list']);
 Route::get('/cost-saving-calculation',[FrontendController::class, 'cost_saving_calculator']);
 Route::get('/contact-us/{product_uid}',[FrontendController::class, 'contactus']);
+Route::get('/contact-us',[FrontendController::class, 'contactus']);
 
 // Frontend Pages Post Request.
 Route::post('/product-enquiry',[ProductEnquiryController::class,'store']);

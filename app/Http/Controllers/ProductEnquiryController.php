@@ -13,7 +13,8 @@ class ProductEnquiryController extends Controller
     public function index()
     {
         $data['page_type'] = 'productsEnquiryAll'; 
-        $data['productEnquiry'] = ProductEnquiry::orderBy('id','desc')->get();
+        $data['productEnquiry'] = ProductEnquiry::orderBy('id','desc')->with('product')->with('product.category')->get();
+        // dd($data);
         return view('admin.product.enquiries', $data);
     }
 
@@ -39,7 +40,7 @@ class ProductEnquiryController extends Controller
 
         $add = ProductEnquiry::create($validatedData);
         if($add){
-            
+
             if($send_details_on_email){
                 // Send All Details on Email 
             }
