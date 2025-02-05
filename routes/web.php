@@ -31,7 +31,6 @@ Route::get('/contact-us',[FrontendController::class, 'contactus']);
 
 // Frontend Pages Post Request.
 Route::post('/product-enquiry',[ProductEnquiryController::class,'store']);
-Route::post('/contact-us',[FrontendController::class, 'submit-contact-form']);
 
 // Admin PAnel Routes
 Route::prefix('admin')->group(function () {

@@ -118,8 +118,8 @@
                                             <div class="card-body">
                                                 <span class="d-block mb-1 avatar-initial rounded text-primary"><i
                                                         class="menu-icon tf-icons bx bx-user"></i>Total
-                                                    Commercial Properties</span>
-                                                <h3 class="card-title text-nowrap mb-2">{{ $commercial ?: 0 }}</h3>
+                                                    Category</span>
+                                                <h3 class="card-title text-nowrap mb-2">{{ $category_count ?: 0 }}</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -128,8 +128,18 @@
                                             <div class="card-body">
                                                 <span class="d-block mb-1 avatar-initial rounded text-primary"><i
                                                         class="menu-icon tf-icons bx bx-user"></i>Total
-                                                    Residential Properties</span>
-                                                <h3 class="card-title text-nowrap mb-2">{{ $residential ?: 0 }}</h3>
+                                                    Products</span>
+                                                <h3 class="card-title text-nowrap mb-2">{{ $product_count ?: 0 }}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-12  mb-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <span class="d-block mb-1 avatar-initial rounded text-primary"><i
+                                                        class="menu-icon tf-icons bx bx-user"></i>Total
+                                                    Enquiry</span>
+                                                <h3 class="card-title text-nowrap mb-2">{{ $enquiry_count ?: 0 }}</h3>
                                             </div>
                                         </div>
                                     </div>

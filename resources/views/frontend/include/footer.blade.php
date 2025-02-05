@@ -160,9 +160,9 @@
     <script src="{{ asset('assets/frontend/js/wow.js') }}"></script>
 
     <!-- Main Js File -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
     
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
     <script>
         function show_Toaster(message, type) {
@@ -185,13 +185,18 @@
 
     $('#sendEnquiry').on('submit', function(e) {
         e.preventDefault();
-        axios.post(`{{ env('APP_URL') }}/product-enquiry`, new FormData(this)).then(function(response) {
+        
+        var form_data = new FormData(this);
+        form_data.append("_token", "{{ csrf_token() }}");
+        axios.post(`{{ env('APP_URL') }}/product-enquiry`, form_data).then(function(response) {
             // handle success
             show_Toaster(response.data.message, response.data.type)
             if (response.data.type === 'success') {
+                
+                $("#sendEnquiry")[0].reset();
                 setTimeout(() => {
                     window.location.href = `{{ env('APP_URL') }}/contact-us`;
-                }, 500);
+                }, 1000);
             }
         }).catch(function(err) {
             show_Toaster(err.response.data.message, 'error')

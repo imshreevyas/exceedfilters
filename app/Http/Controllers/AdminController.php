@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use App\Models\Residential;
-use App\Models\Commercial;
+use App\Models\ProductEnquiry;
 
 class AdminController extends Controller
 {
@@ -43,8 +44,9 @@ class AdminController extends Controller
     public function adminDashboard(Request $request){
         $this->checkUserType($request);
         $data['page_type'] = 'dashboard';
-        $data['commercial'] = Commercial::all()->count();
-        $data['residential'] = Residential::all()->count();
+        $data['product_count'] = Product::all()->count();
+        $data['category_count'] = Category::all()->count();
+        $data['enquiry_count'] = ProductEnquiry::where('product_uid','!=','0')->get()->count();
         return view('admin.dashboard', $data);
     }
 
