@@ -75,8 +75,8 @@
 
                             <a href="tel:{{ $settings['mobile'] }}" class="link-btn">
                                 <span class="link-effect">
-                                    <span class="effect-1">Call anytime</span>
-                                    <span class="effect-1">Call anytime</span>
+                                    <span class="effect-1">Call Anytime</span>
+                                    <span class="effect-1">Call Anytime</span>
                                 </span>
                                 <img src="{{ asset('assets/frontend/img/icon/arrow-left-top.svg') }}" alt="icon">
                             </a>
