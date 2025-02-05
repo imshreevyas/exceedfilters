@@ -29,7 +29,7 @@ class FrontendController extends Controller
     }
 
     public function index(){
-        $this->data['products'] = optional(Product::where('status', '1')->orderBy('id', 'DESC')->get())->toArray();
+        $this->data['products'] = optional(Product::where('status', '1')->with('category')->orderBy('id', 'DESC')->get())->toArray();
         $this->data['settings']['page'] = 'home';
         return view('frontend.views.home', $this->data);
     }
@@ -39,8 +39,10 @@ class FrontendController extends Controller
         return view('frontend.views.about-us', $this->data);
     }
 
-    public function contactus(){
+    public function contactus($product_uid = 0){
+        $this->data['products'] = optional(Product::select('product_uid','product_name')->where('status', '1')->orderBy('id', 'DESC')->get())->toArray();
         $this->data['settings']['page'] = 'contact-us';
+        $this->data['selected_uid'] = $product_uid;
         return view('frontend.views.contact-us', $this->data);
     }
 

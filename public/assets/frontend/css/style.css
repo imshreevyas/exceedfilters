@@ -5902,8 +5902,8 @@ ul.wp-block-latest-posts li:last-child {
   content: "";
   position: absolute;
   inset: 0;
-  background: #0A0C00;
-  opacity: 0.2;
+  background: var(--gradient-theme-color);
+  opacity: 0.5;
 }
 @media (max-width: 767px) {
   .breadcumb-wrapper {
@@ -7068,7 +7068,7 @@ ul.wp-block-latest-posts li:last-child {
 }
 
 .marquee-wrap {
-  background: #1601AC;
+  background: var(--gradient-theme-color);
   padding: 31px 0;
 }
 .marquee-wrap .marquee__group .m-item {
@@ -7085,7 +7085,7 @@ ul.wp-block-latest-posts li:last-child {
   /* Extra small devices */
 }
 .marquee-wrap .marquee__group .m-item a i {
-  color: var(--theme-color);
+  color: var(--theme-color-3);
   margin-right: 20px;
 }
 @media (max-width: 767px) {

@@ -12,7 +12,7 @@ class ProductEnquiry extends Model
         'product_uid',
         'client_name',
         'client_email',
-        'client_message',
+        'message',
         'created_at',
         'updated_at',
     ];

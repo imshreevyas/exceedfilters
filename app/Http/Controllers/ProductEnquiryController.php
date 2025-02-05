@@ -39,11 +39,10 @@ class ProductEnquiryController extends Controller
 
         $add = ProductEnquiry::create($validatedData);
         if($add){
-
+            
             if($send_details_on_email){
                 // Send All Details on Email 
             }
-
 
             return response()->json([
                 'message'=>'Product Enquiry Sent Successfully!',

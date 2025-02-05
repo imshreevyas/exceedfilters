@@ -10,8 +10,8 @@
         <div class="container-fluid">
             <div class="breadcumb-content">
                 <ul class="breadcumb-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="shop.html">{{ $product['category']['name'] ?: '' }}</a></li>
+                    <li><a href="{{ env('APP_URL') }}">Home</a></li>
+                    <li><a>{{ $product['category']['name'] ?: '' }}</a></li>
                     <li>{{ $product['product_name'] ?: '' }}</li>
                 </ul>
             </div>
@@ -66,12 +66,12 @@
                             {!! $product['long_desc'] !!}
                         </p>
                         <div class="actions">
-                            <button class="btn" onclick="show_modal('{{ $product['product_uid'] }}')">
+                            <a href="{{ env('APP_URL').'/contact-us/'.$product['product_uid'] }}" class="btn">
                                 <span class="link-effect">
                                     <span class="effect-1">ENQUIRY</span>
                                     <span class="effect-1">ENQUIRY</span>
                                 </span>
-                            </button>
+                            </a>
                         </div>
                         <div class="product_meta">
                             <span class="posted_in">Category: <a rel="tag">{{ $product['category']['name'] ?: '' }}</a></span>

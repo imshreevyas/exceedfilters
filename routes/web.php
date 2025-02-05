@@ -26,10 +26,10 @@ Route::get('/about-us',[FrontendController::class, 'aboutus']);
 Route::get('/product-details/{product_uid}',[FrontendController::class, 'product_details']);
 Route::get('/products-list',[FrontendController::class, 'products_list']);
 Route::get('/cost-saving-calculation',[FrontendController::class, 'cost_saving_calculator']);
-Route::get('/contact-us',[FrontendController::class, 'contactus']);
+Route::get('/contact-us/{product_uid}',[FrontendController::class, 'contactus']);
 
 // Frontend Pages Post Request.
-Route::post('/product-enquiry',[FrontendController::class, 'submit-enquiry-form']);
+Route::post('/product-enquiry',[ProductEnquiryController::class,'store']);
 Route::post('/contact-us',[FrontendController::class, 'submit-contact-form']);
 
 // Admin PAnel Routes

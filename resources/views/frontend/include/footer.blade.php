@@ -161,6 +161,43 @@
 
     <!-- Main Js File -->
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <script>
+        function show_Toaster(message, type) {
+            var success = "#00b09b, #96c93d";
+            var error = "#a7202d, #ff4044";
+            var ColorCode = type == "success" ? success : error;
+
+            return Toastify({
+                text: message,
+                duration: 3000,
+                close: true,
+                gravity: "bottom", // top or bottom
+                position: "center", // left, center or right
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                    background: `linear-gradient(to right, ${ColorCode})`,
+                },
+            }).showToast();
+        }
+
+    $('#sendEnquiry').on('submit', function(e) {
+        e.preventDefault();
+        axios.post(`{{ env('APP_URL') }}/product-enquiry`, new FormData(this)).then(function(response) {
+            // handle success
+            show_Toaster(response.data.message, response.data.type)
+            if (response.data.type === 'success') {
+                setTimeout(() => {
+                    window.location.href = `{{ env('APP_URL') }}/contact-us`;
+                }, 500);
+            }
+        }).catch(function(err) {
+            show_Toaster(err.response.data.message, 'error')
+        })
+    });
+    </script>
 </body>
 
 </html>

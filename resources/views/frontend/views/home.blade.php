@@ -16,7 +16,7 @@
                     <div class="col-lg-6">
                         <p class="hero-text wow img-custom-anim-right" data-wow-duration="1.5s" data-wow-delay="0.1s">Nanofiber Technology for Superior Sub-Micron Capture, Extended Filter Life, and Reduced Energy Costs</p>
                         <div class="btn-group fade_right">
-                            <a href="#" class="btn wow img-custom-anim-right" >
+                            <a href="#products" class="btn wow img-custom-anim-right" >
                                 <span class="link-effect">
                                     <span class="effect-1">VIEW PRODUCTS</span>
                                     <span class="effect-1">VIEW PRODUCTS</span>
@@ -81,7 +81,9 @@
     <!--==============================
     Products Area
     ==============================-->
-    @include('frontend.views.products')
+    @if(count($products) > 0)
+        @include('frontend.views.products')
+    @endif
 
     
 
