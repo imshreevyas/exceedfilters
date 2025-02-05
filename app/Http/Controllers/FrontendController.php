@@ -6,6 +6,7 @@ use App\Models\Residential;
 use App\Models\Commercial;
 use App\Models\GeneralSetting;
 use App\Models\Admin;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -28,8 +29,7 @@ class FrontendController extends Controller
     }
 
     public function index(){
-        $this->data['residential_featured'] = optional(Residential::where('status', '1')->orderBy('id', 'DESC')->get())->toArray();
-        $this->data['commercial_featured'] = optional(Commercial::where('status', '1')->orderBy('id', 'DESC')->get())->toArray();
+        $this->data['products'] = optional(Product::where('status', '1')->with('category')->orderBy('id', 'DESC')->get())->toArray();
         $this->data['settings']['page'] = 'home';
         return view('frontend.views.home', $this->data);
     }
@@ -39,51 +39,42 @@ class FrontendController extends Controller
         return view('frontend.views.about-us', $this->data);
     }
 
-    public function commercial_listing(){
-        $data['settings'] = $this->settings;
-        $data['properties'] = Commercial::where('status', '1')->orderBy('id', 'DESC')->paginate(15);
-        $data['url_name'] = 'commercial-properties';
-        if(count($data['properties']) > 0){
-            return view('frontend.views.property_listing', $data);
-        }else{
-            return view('frontend.views.property_listing_limit_reached', $data);
-        }
+    public function contactus($product_uid = 0){
+        $this->data['products'] = optional(Product::select('product_uid','product_name')->where('status', '1')->orderBy('id', 'DESC')->get())->toArray();
+        $this->data['settings']['page'] = 'contact-us';
+        $this->data['selected_uid'] = $product_uid;
+        return view('frontend.views.contact-us', $this->data);
     }
 
-    public function residential_listing(){
-        $data['settings'] = $this->settings;
-        $data['properties'] = Residential::where('status', '1')->orderBy('id', 'DESC')->paginate(15);
-        $data['url_name'] = 'residential-properties';
-        if(count($data['properties']) > 0){
-            return view('frontend.views.property_listing', $data);
-        }else{
-            return view('frontend.views.property_listing_limit_reached', $data);
-        }
+    public function cost_saving_calculator(){
+        $this->data['settings']['page'] = 'cost-saving-calculator';
+        return view('frontend.views.cost-saving-calculator', $this->data);
     }
 
-    public function commercial_details($property_uid = 0){
-        $data['settings'] = $this->settings;
-        $data['propertyData'] = Commercial::where(['status' => '1','property_uid' => $property_uid])->first();
-        $data['similar_property'] = Commercial::where(['status' => '1',['property_uid', '!=', $property_uid]])->get();
-        $data['url_name'] = 'Commercial Properties';
-        if(!empty($data['propertyData'])){
-            return view('frontend.views.property_detail', $data);
-        }else{
-            return view('frontend.views.errors.404', $data);
+    public function product_details($product_uid = 0){
+
+        $this->data['settings']['page'] = 'product-details';
+        if($product_uid == 0){
+            return view('frontend.views.errors.404', $this->data);    
         }
-        return view('frontend.views.property_detail', $data);
+
+        $this->data['product'] = Product::where('product_uid',$product_uid)->with('category')->first();
+        if(empty($this->data['product'])){
+            return view('frontend.views.errors.404', $this->data);    
+        }
+
+        $this->data['related_products'] = Product::where('category_uid',$this->data['product']['category_uid'])->where('product_uid', '!=', $this->data['product']['product_uid'])->with('category')->get();
+        return view('frontend.views.product-details', $this->data);
     }
 
-    public function residential_details($property_uid = 0){
-        $data['settings'] = $this->settings;
-        $data['propertyData'] = Residential::where(['status' => '1','property_uid' => $property_uid])->first();
-        $data['similar_property'] = Residential::where(['status' => '1',['property_uid', '!=', $property_uid]])->get();
-        $data['url_name'] = 'Residential Properties';
-        if(!empty($data['propertyData'])){
-            return view('frontend.views.property_detail', $data);
-        }else{
-            return view('frontend.views.errors.404', $data);
+    public function products_list(){
+        $this->data['settings']['page'] = 'product-list';
+        $this->data['related_products'] = Product::where('status', 1)->with('category')->get();
+        if(empty($this->data['product'])){
+            return view('frontend.views.errors.404', $this->data);    
         }
-        return view('frontend.views.property_detail', $data);
+
+        return view('frontend.views.product-list', $this->data);
     }
+
 }

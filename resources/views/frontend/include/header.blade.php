@@ -5,26 +5,21 @@
         <div class="mobile-menu-area">
             <button class="menu-toggle"><i class="fas fa-times"></i></button>
             <div class="mobile-logo">
-                <a href="index.html"><img src="storage/app/admin/fav.png" alt="Ovation"></a>
+                <a href="#"><img src="{{ env('STORAGE_URL').'storage/app/admin/fav.png' }}" alt="Ovation"></a>
             </div>
             <div class="mobile-menu">
                 <ul>
                     <li>
                         <a href="{{ env('APP_URL') }}">HOME</a>
                     </li>
-                    <li class="menu-item-has-children">
-                        <a href="{{ env('APP_URL') }}/products">PRODUCTS</a>
-                        <ul class="sub-menu">
-                            <li class="active"><a href="index.html">Air Filters</a></li>
-                            <li><a href="home-2.html">Mask Filters</a></li>
-                            <li><a href="home-3.html">Face Mask</a></li>
-                        </ul>
+                    <li>
+                        <a href="{{ env('APP_URL').'#product' }}">PRODUCTS</a>
                     </li>
                     <li>
-                        <a href="{{ env('APP_URL') }}/about-us">About Us</a>
+                        <a href="{{ env('APP_URL').'/about-us' }}">ABOUT US</a>
                     </li>
                     <li>
-                        <a href="{{ env('APP_URL') }}/contact-us">Contact</a>
+                        <a href="{{ env('APP_URL').'/contact-us' }}">CONTACT</a>
                     </li>
                 </ul>
             </div>
@@ -83,50 +78,32 @@
                     <div class="row align-items-center justify-content-between">
                         <div class="col-auto">
                             <div class="header-logo">
-                                <a href="index.html">
-                                    <img src="{{ $settings['logo'] }}" alt="logo">
+                                <a href="{{ env('APP_URL') }}">
+                                    <img src="{{ env('STORAGE_URL').$settings['logo'] }}" alt="logo">
                                 </a>
                             </div>
                         </div>
-                        <div class="col-auto ms-auto">
+                        <div class="col-auto">
                             <nav class="main-menu d-none d-lg-inline-block">
                                 <ul>
-                                    <li>
-                                        <a href="/">
-                                            <span class="link-effect">
-                                                <span class="effect-1">HOME</span>
-                                                <span class="effect-1">HOME</span>
-                                            </span>
-                                        </a>
-                                    </li>
                                     <li class="menu-item-has-children">
-                                        <a href="#">
+                                        <a href="{{ env('APP_URL').'#products' }}">
                                             <span class="link-effect">
                                                 <span class="effect-1">PRODUCTS</span>
                                                 <span class="effect-1">PRODUCTS</span>
                                             </span>
                                         </a>
-                                        <ul class="sub-menu">
-                                            <li class="active"><a href="index.html">Air Filters</a></li>
-                                            <li><a href="home-2.html">Mask Filters</a></li>
-                                            <li><a href="home-3.html">Face Mask</a></li>
-                                        </ul>
                                     </li>
                                     <li class="menu-item-has-children">
-                                        <a href="#">
+                                        <a href="{{ env('APP_URL').'/about-us' }}">
                                             <span class="link-effect">
                                                 <span class="effect-1">ABOUT</span>
                                                 <span class="effect-1">ABOUT</span>
                                             </span>
                                         </a>
-                                        <ul class="sub-menu">
-                                            <li><a href="project.html">About Exceed</a></li>
-                                            <li><a href="project-2.html">Our Team</a></li>
-                                            <li><a href="project-3.html">Informational Resources</a></li>
-                                        </ul>
                                     </li>
                                     <li>
-                                        <a href="contact.html">
+                                        <a href="{{ env('APP_URL').'/contact-us' }}">
                                             <span class="link-effect">
                                                 <span class="effect-1">CONTACT</span>
                                                 <span class="effect-1">CONTACT</span>
@@ -145,17 +122,6 @@
                         </div>
                         <div class="col-auto d-none d-lg-block">
                             <div class="header-button">
-                                <!-- <button type="button" class="search-btn searchBoxToggler"><img src="{{ asset('assets/frontend/img/icon/search.svg') }}" alt="icon">
-                                    <span class="link-effect">
-                                        <span class="effect-1">SEARCH</span>
-                                        <span class="effect-1">SEARCH</span>
-                                    </span>
-                                </button> -->
-                                <button type="button" class="sidebar-btn sideMenuToggler">
-                                    <span class="line"></span>
-                                    <span class="line"></span>
-                                    <span class="line"></span>
-                                </button>
                             </div>
                         </div>
                     </div>

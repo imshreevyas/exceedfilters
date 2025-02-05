@@ -1,35 +1,21 @@
-@include('frontend.include.head')
+@extends('frontend.views.layout')
 
-<!-- Main Content -->
-<div class="sub-banner">
+@section('content')
+
+<div class="error-wrapper text-center">
     <div class="container">
-        <div class="breadcrumb-area">
-            <h1>Property List</h1>
-            <ul class="breadcrumbs">
-                <li><a href="{{ env('APP_URL') }}">Home</a></li>
-                <li class="active">{{ $url_name }}</li>
-            </ul>
-        </div>
+        <img class="mb-50" src="assets/img/normal/404.png" alt="error">
+        <h2>Look Like You’re Lost</h2>
+        <p class="sec-text mb-30">The link you followed probably broken or the page has been removed</p>
+        <a href="index.html" class="link-btn">
+            <span class="link-effect">
+                <span class="effect-1">back to home</span>
+                <span class="effect-1">back to home</span>
+            </span>
+            <img src="assets/img/icon/arrow-left-top.svg" alt="icon">
+        </a>
     </div>
 </div>
 
-<!-- Pages 404 start -->
-<div class="pages-404">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="pages-404-inner">
-                    <h1>Oops... Inavlid Property!</h1>
-                    <p class="lead">Contact us now! for more other properties.</p>
-                    <a href="tel:{{ isset($settings['mobile']) ? $settings['mobile'] : '' }}" class="btn border-thn">Call Now!</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Pages 404 2 end -->
 
-
-<!-- Main Content -->
-
-@include('frontend.include.footer')
+@stop

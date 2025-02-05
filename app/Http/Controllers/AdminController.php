@@ -32,6 +32,7 @@ class AdminController extends Controller
             'type'=>'failed'
         ], 401);
         
+        $request->session()->regenerate();
         $request->session()->put('user_type', 'admin');
         return response()->json([
             'message'=>'welcome',
@@ -56,7 +57,7 @@ class AdminController extends Controller
     public function adminAccountUpdate(Request $request, $id){
         $this->checkUserType($request);
         $validatedData = $request->validate([
-            'username' => 'required|string',
+            'name' => 'required|string',
             'logo' => 'file|mimes:jpeg,png,jpg,mp4,mov,avi|max:20480',
         ]);
 
@@ -87,11 +88,15 @@ class AdminController extends Controller
     public function checkUserType(Request $request){
         // Check User Type and Redirect
         if($request->session()->has('user_type') && $request->session()->get('user_type') != 'admin')
-          return redirect()->route('adminlogin');
+          return redirect()->route('adminLogin');
     }
 
 
     public function generatePassword($newPass = 'Admin@123'){
         return Hash::make($newPass);
+    }
+
+    public function logout(){
+        return redirect()->route('adminLogin');
     }
 }

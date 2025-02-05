@@ -23364,6 +23364,24 @@ body.bg-white .under-construction-page .under-construction-content .search_form 
   .label_text {
     align-items: center;
   }
+
+  .assetsData{
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      /* width: 100%; */
+      overflow: auto;
+  }
+}
+
+.assetsData{
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  /* width: 100%; */
+  flex-wrap: wrap;
+  gap: 15px;
+  overflow: auto;
 }
 
 

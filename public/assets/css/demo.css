@@ -105,3 +105,25 @@
   text-align: center;
   margin-top: 1rem;
 }
+
+.assetsData{
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px;
+  overflow: auto;
+}
+
+
+@media screen and (max-width: 767px) {
+
+  .assetsData{
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 10px;
+      overflow: auto;
+  }
+}

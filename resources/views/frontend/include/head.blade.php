@@ -38,6 +38,8 @@
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/imageRevealHover.css') }}">
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
+    <script src="{{asset('assets/js/axios.min.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
 </head>
 

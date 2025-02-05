@@ -12,11 +12,11 @@
                     </div>
                     <div class="col-lg-5">
                         <div class="footer-top-wrap">
-                            <p class="mb-30">We are digital agency that helps businesses develop immersive and engaging user experiences</p>
+                            <p class="mb-30">Need additional information on filter sizes, specifications, availability, or pricing?</p>
                             <a href="contact-us" class="btn">
                                 <span class="link-effect">
-                                    <span class="effect-1">LET'S TALK WITH US</span>
-                                    <span class="effect-1">LET'S TALK WITH US</span>
+                                    <span class="effect-1">GET IN TOUCH</span>
+                                    <span class="effect-1">GET IN TOUCH</span>
                                 </span>
                             </a>
                         </div>
@@ -28,7 +28,7 @@
                     <div class="col-xxl-6 col-lg-7">
                         <ul class="footer-menu-list">
                             <li>
-                                <a href="about-us">
+                                <a href="#">
                                     <span class="link-effect">
                                         <span class="effect-1">ABOUT COMPANY</span>
                                         <span class="effect-1">ABOUT COMPANY</span>
@@ -36,7 +36,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="products">
+                                <a href="#">
                                     <span class="link-effect">
                                         <span class="effect-1">OUR PRODUCTS</span>
                                         <span class="effect-1">OUR PRODUCTS</span>
@@ -44,7 +44,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="contact-us">
+                                <a href="#">
                                     <span class="link-effect">
                                         <span class="effect-1">CONTACT</span>
                                         <span class="effect-1">CONTACT</span>
@@ -79,50 +79,51 @@
         <div class="copyright-wrap">
             <div class="container">
                 <div class="row gy-3 justify-content-between align-items-center">
-                    <div class="col-md-6">
-                        <div class="social-btn style3">
-                    @if(isset($settings['facebook']) && !empty($settings['facebook']))
-                            <a href="https://www.facebook.com/">
-                                <span class="link-effect">
-                                    <span class="effect-1"><i class="fab fa-facebook"></i></span>
-                                    <span class="effect-1"><i class="fab fa-facebook"></i></span>
-                                </span>
-                            </a>
-                    @endif
-                
-                    @if(isset($settings['instagram']) && !empty($settings['instagram']))
-                            <a href="https://instagram.com/">
-                                <span class="link-effect">
-                                    <span class="effect-1"><i class="fab fa-instagram"></i></span>
-                                    <span class="effect-1"><i class="fab fa-instagram"></i></span>
-                                </span>
-                            </a>
-                    @endif
-                
-                    @if(isset($settings['twitter']) && !empty($settings['twitter']))
-                            <a href="https://twitter.com/">
-                                <span class="link-effect">
-                                    <span class="effect-1"><i class="fab fa-twitter"></i></span>
-                                    <span class="effect-1"><i class="fab fa-twitter"></i></span>
-                                </span>
-                            </a>
-                    @endif
-                
-                    @if(isset($settings['dribbble']) && !empty($settings['dribbble']))
-                            <a href="https://dribbble.com/">
-                                <span class="link-effect">
-                                    <span class="effect-1"><i class="fab fa-dribbble"></i></span>
-                                    <span class="effect-1"><i class="fab fa-dribbble"></i></span>
-                                </span>
-                            </a>
-                    @endif
-                        </div>
-                    </div>
-                    <div class="col-md-6 align-self-center text-lg-end">
-                        <p class="copyright-text">Copyright © 2024
-                            <a href="https://themeforest.net/user/themegenix">{{ $settings['company_name'] }}</a>
+                    <div class="col-md-6 align-self-center text-lg-start">
+                        <p class="copyright-text">Copyright © {{ date('Y') }}
+                            <a href="#">{{ $settings['company_name'] }}</a>
                         </p>
                     </div>
+                    <div class="col-md-6 align-self-center text-lg-end">
+                        <div class="social-btn style3">
+                            @if(isset($settings['facebook']) && !empty($settings['facebook']))
+                                    <a href="https://www.facebook.com/">
+                                        <span class="link-effect">
+                                            <span class="effect-1"><i class="fab fa-facebook"></i></span>
+                                            <span class="effect-1"><i class="fab fa-facebook"></i></span>
+                                        </span>
+                                    </a>
+                            @endif
+                        
+                            @if(isset($settings['instagram']) && !empty($settings['instagram']))
+                                    <a href="https://instagram.com/">
+                                        <span class="link-effect">
+                                            <span class="effect-1"><i class="fab fa-instagram"></i></span>
+                                            <span class="effect-1"><i class="fab fa-instagram"></i></span>
+                                        </span>
+                                    </a>
+                            @endif
+                        
+                            @if(isset($settings['twitter']) && !empty($settings['twitter']))
+                                    <a href="https://twitter.com/">
+                                        <span class="link-effect">
+                                            <span class="effect-1"><i class="fab fa-twitter"></i></span>
+                                            <span class="effect-1"><i class="fab fa-twitter"></i></span>
+                                        </span>
+                                    </a>
+                            @endif
+                        
+                            @if(isset($settings['dribbble']) && !empty($settings['dribbble']))
+                                    <a href="https://dribbble.com/">
+                                        <span class="link-effect">
+                                            <span class="effect-1"><i class="fab fa-dribbble"></i></span>
+                                            <span class="effect-1"><i class="fab fa-dribbble"></i></span>
+                                        </span>
+                                    </a>
+                            @endif
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -160,6 +161,43 @@
 
     <!-- Main Js File -->
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <script>
+        function show_Toaster(message, type) {
+            var success = "#00b09b, #96c93d";
+            var error = "#a7202d, #ff4044";
+            var ColorCode = type == "success" ? success : error;
+
+            return Toastify({
+                text: message,
+                duration: 3000,
+                close: true,
+                gravity: "bottom", // top or bottom
+                position: "center", // left, center or right
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                    background: `linear-gradient(to right, ${ColorCode})`,
+                },
+            }).showToast();
+        }
+
+    $('#sendEnquiry').on('submit', function(e) {
+        e.preventDefault();
+        axios.post(`{{ env('APP_URL') }}/product-enquiry`, new FormData(this)).then(function(response) {
+            // handle success
+            show_Toaster(response.data.message, response.data.type)
+            if (response.data.type === 'success') {
+                setTimeout(() => {
+                    window.location.href = `{{ env('APP_URL') }}/contact-us`;
+                }, 500);
+            }
+        }).catch(function(err) {
+            show_Toaster(err.response.data.message, 'error')
+        })
+    });
+    </script>
 </body>
 
 </html>
