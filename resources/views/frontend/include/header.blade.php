@@ -74,7 +74,7 @@
         <div class="sticky-wrapper">
             <!-- Main Menu Area -->
             <div class="menu-area">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-auto">
                             <div class="header-logo">
@@ -118,10 +118,6 @@
                                     <span class="line"></span>
                                     <span class="line"></span>
                                 </button>
-                            </div>
-                        </div>
-                        <div class="col-auto d-none d-lg-block">
-                            <div class="header-button">
                             </div>
                         </div>
                     </div>
