@@ -32,7 +32,7 @@
                             </h4>
                             <p class="feature-card-text mb-0">{{ $settings['address'] }}</p>
 
-                            <a href="https://maps.google.com/maps?q=7151%20Discovery%20Drive%20%231627%2C%20Chattanooga%2C%20TN%2037416&t=m&z=10&output=embed&iwloc=near" class="link-btn">
+                            <a href="https://maps.google.com/maps?q=7151%20Discovery%20Drive%20%231627%2C%20Chattanooga%2C%20TN%2037416&t=m&z=10&iwloc=near" class="link-btn">
                                 <span class="link-effect">
                                     <span class="effect-1">Get direction</span>
                                     <span class="effect-1">Get direction</span>
@@ -92,7 +92,7 @@
     ==============================-->
     <div class="contact-area-1 space bg-gradient">
         <div class="contact-map shape-mockup wow img-custom-anim-left" data-wow-duration="1.5s" data-wow-delay="0.2s" data-left="0" data-top="-100px" data-bottom="140px">
-            <iframe src="https://maps.google.com/maps?q=7151%20Discovery%20Drive%20%231627%2C%20Chattanooga%2C%20TN%2037416&t=m&z=10&output=embed&iwloc=near" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://maps.google.com/maps?q=7151%20Discovery%20Drive%20%231627%2C%20Chattanooga%2C%20TN%2037416&t=m&z=10&output=embed&iwloc=near" allowfullscreen=""></iframe>
         </div>
         <div class="container">
             <div class="row align-items-center justify-content-end">
