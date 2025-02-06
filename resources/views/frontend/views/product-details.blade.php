@@ -33,7 +33,7 @@
                                     @foreach($product_assets as $single_assets)
                                     <div class="slide">
                                         <div class="img">
-                                            <img src="{{ env('STORAGE_URL').$single_assets['path'] }}" alt="Product Image">
+                                            <img src="{{ env('ASSET_URL').$single_assets['path'] }}" alt="Product Image">
                                         </div>
                                     </div>
                                     @endforeach
@@ -50,7 +50,7 @@
                                 @foreach($product_assets as $single_assets)
                                 <div class="col-lg-4 slide-thumb">
                                     <div class="img">
-                                        <img src="{{ env('STORAGE_URL').$single_assets['path'] }}" alt="Product Image">
+                                        <img src="{{ env('ASSET_URL').$single_assets['path'] }}" alt="Product Image">
                                     </div>
                                 </div>
                                 @endforeach
@@ -101,7 +101,7 @@
                                     @foreach($product_specification_assets as $single_specification)
                                     <tr>
                                         <td>{{ $single_specification['original_filename'] }}</td>
-                                        <td><a target="_blank" href="{{ env('STORAGE_URL').$single_specification['path'] }}">Click Here!</a></td>
+                                        <td><a target="_blank" href="{{ env('ASSET_URL').$single_specification['path'] }}">Click Here!</a></td>
                                     </tr>
                                     @endforeach
                                 @endif
