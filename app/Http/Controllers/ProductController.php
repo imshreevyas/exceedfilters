@@ -45,7 +45,7 @@ class ProductController extends Controller
         $productUid = (string)Str::uuid()->getHex();
 
         // Product Images
-        if(count($request->file('product_assets')) >  0){
+        if($request->file('product_assets') != NULL && count($request->file('product_assets')) >  0){
             foreach ($request->file('product_assets') as $asset) {
                 $type = $asset->getMimeType();
             
@@ -60,7 +60,7 @@ class ProductController extends Controller
         }
 
         // Specifications
-        if(count($request->file('product_specification_assets')) >  0){
+        if($request->file('product_specification_assets') != NULL && count($request->file('product_specification_assets')) >  0){
             foreach ($request->file('product_specification_assets') as $asset) {
                 $type = $asset->getMimeType();
             
