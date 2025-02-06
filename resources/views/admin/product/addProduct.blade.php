@@ -159,7 +159,9 @@
 
     $('#addProduct').on('submit', function(e) {
         e.preventDefault();
-        axios.post(`${url}/admin/product/add`, new FormData(this)).then(function(response) {
+        var form_data = new FormData(this);
+        form_data.append("_token", "{{ csrf_token() }}");
+        axios.post(`${url}/admin/product/add`, form_data).then(function(response) {
             // handle success
             show_Toaster(response.data.message, response.data.type)
             if (response.data.type === 'success') {

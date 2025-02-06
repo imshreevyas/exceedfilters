@@ -10,18 +10,24 @@
         <div class="row gy-40 justify-content-center">
             
             @foreach($products as $singleData)
+            @php 
+                $single_image = json_decode($singleData['product_assets'],TRUE);
+                if(count($single_image) > 0){
+                    $single_image = $single_image[0]['path'];
+                }
+            @endphp
             <div class="col-lg-4 col-md-6">
                 <div class="blog-card style3">
                     <div class="blog-img">
                         <a href="{{ env('APP_URL').'/product-details/'.$singleData['product_uid'] }}">
-                            <img src="https://exceedfilters.com/cdn/shop/files/merv8mockup_576x416.png?v=1614324256" alt="blog image">
+                            <img src="{{ env('STORAGE_URL').$single_image }}" alt="{{ $singleData['product_name'] }}">
                         </a>
                     </div>
                     <div class="blog-content">
+                        <h4 class="blog-title"><a href="{{ env('APP_URL').'/product-details/'.$singleData['product_uid'] }}">{{ $singleData['category']['name'] }}</a></h4>
                         <div class="post-meta-item blog-meta">
-                            <a href="{{ env('APP_URL').'/product-details/'.$singleData['product_uid'] }}">{{ $singleData['category']['name'] }}</a>
+                            <a href="{{ env('APP_URL').'/product-details/'.$singleData['product_uid'] }}">{{ $singleData['product_name'] }}</a>
                         </div>
-                        <h4 class="blog-title"><a href="{{ env('APP_URL').'/product-details/'.$singleData['product_uid'] }}">{{ $singleData['product_name'] }}</a></h4>
                     </div>
                 </div>
             </div>
