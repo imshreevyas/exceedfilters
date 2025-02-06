@@ -50,7 +50,7 @@ class ProductController extends Controller
                 $type = $asset->getMimeType();
             
                 $filename = Str::random(20) . '.' . $asset->getClientOriginalExtension();
-                $path = $asset->storeAs('product_assets/' . $productUid, $filename);
+                $path = $asset->storeAs('product_assets/' . $productUid, $filename, 'public');
                 
                 $assetPath = 'storage/app/' . $path;
                 $assets[] = [
@@ -66,7 +66,7 @@ class ProductController extends Controller
                 $type = $asset->getMimeType();
             
                 $filename = Str::random(20) . '.' . $asset->getClientOriginalExtension();
-                $path = $asset->storeAs('product_specification_assets/' . $productUid, $filename);
+                $path = $asset->storeAs('product_specification_assets/' . $productUid, $filename, 'public');
                 
                 $assetPath = 'storage/app/' . $path;
                 $product_specification_assets[] = [

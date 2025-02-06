@@ -266,6 +266,7 @@
     $('#addNewAssets').submit(function(e) {
         e.preventDefault();
         var formdata = new FormData(this);
+        formdata.append("_token", "{{ csrf_token() }}");
         axios.post(`${url}/admin/product/addAssets`, formdata).then(function(response) {
             // handle success
             $(".addNewAssets")[0].reset();
@@ -282,6 +283,7 @@
     $('#addNewSpecification').submit(function(e) {
         e.preventDefault();
         var formdata = new FormData(this);
+        formdata.append("_token", "{{ csrf_token() }}");
         axios.post(`${url}/admin/product/addSpecification`, formdata).then(function(response) {
             // handle success
             $("#addNewSpecification")[0].reset();

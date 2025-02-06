@@ -166,7 +166,7 @@
             show_Toaster(response.data.message, response.data.type)
             if (response.data.type === 'success') {
                 setTimeout(() => {
-                    window.location.href = `${url}/admin/commercial/add`;
+                    window.location.href = `${url}/admin/product/add`;
                 }, 500);
             }
         }).catch(function(err) {
