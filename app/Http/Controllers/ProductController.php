@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -48,11 +49,18 @@ class ProductController extends Controller
         if($request->file('product_assets') != NULL && count($request->file('product_assets')) >  0){
             foreach ($request->file('product_assets') as $asset) {
                 $type = $asset->getMimeType();
-            
                 $filename = Str::random(20) . '.' . $asset->getClientOriginalExtension();
-                $path = $asset->storeAs('product_assets/' . $productUid, $filename, 'public');
+                $directory = 'product_assets/' . $productUid;
+
+                // Ensure the directory exists and set permissions
+                if (!Storage::disk('public')->exists($directory)) {
+                    Storage::disk('public')->makeDirectory($directory);
+                    chmod(storage_path('app/public/' . $directory), 0775);
+                }
+
+                $path = $asset->storeAs($directory, $filename, 'public');
                 
-                $assetPath = 'storage/app/' . $path;
+                $assetPath = Storage::url($path);
                 $assets[] = [
                     'path' => $assetPath,
                 ];            
@@ -66,9 +74,17 @@ class ProductController extends Controller
                 $type = $asset->getMimeType();
             
                 $filename = Str::random(20) . '.' . $asset->getClientOriginalExtension();
-                $path = $asset->storeAs('product_specification_assets/' . $productUid, $filename, 'public');
+                $directory = 'product_specification_assets/' . $productUid;
+
+                // Ensure the directory exists and set permissions
+                if (!Storage::disk('public')->exists($directory)) {
+                    Storage::disk('public')->makeDirectory($directory);
+                    chmod(storage_path('app/public/' . $directory), 0775);
+                }
+
+                $path = $asset->storeAs($directory, $filename, 'public');
                 
-                $assetPath = 'storage/app/' . $path;
+                $assetPath = Storage::url($path);
                 $product_specification_assets[] = [
                     'original_filename' => $asset->getClientOriginalName(),
                     'path' => $assetPath,
@@ -143,7 +159,7 @@ class ProductController extends Controller
 
                 $html = '';
                 foreach($assetData as $key => $singleData){
-                    $assets = "<img class='mb-3' src='".env('STORAGE_URL').$singleData['path']."' alt='' style='height: 100px;border: 1px solid #000;'>";
+                    $assets = "<img class='mb-3' src='".env('ASSET_URL').$singleData['path']."' alt='' style='height: 100px;border: 1px solid #000;'>";
                     $html .= "<hr><div class='mb-3' style='display:flex;flex-direction: column;'>$assets<button onclick=deleteAsset('$product_uid','$key') class='btn btn-danger' style='width:max-content'>delete Asset</button></div>";
                 }
 
@@ -181,7 +197,7 @@ class ProductController extends Controller
                 $html = '';
                 foreach($assetData as $key => $singleData){
                     $original_filename = $singleData['original_filename'];
-                    $assets = "<iframe  class='mb-3' src='".env('STORAGE_URL').$singleData['path']."#zoom=150' alt='' style='height: 120px;width:auto;border: 1px solid #000;'></iframe>";
+                    $assets = "<iframe  class='mb-3' src='".env('ASSET_URL').$singleData['path']."#zoom=150' alt='' style='height: 120px;width:auto;border: 1px solid #000;'></iframe>";
                     $html .= "<hr><div class='mb-3' style='display:flex;flex-direction: column;width: 180px;'>$assets <span style='width:80px'><b>NAME:</b> $original_filename</span><button onclick=deleteSpecificationAsset('$product_uid','$key') class='btn btn-danger' style='width:max-content'>Delete Specification</button></div>";
                 }
 
@@ -243,7 +259,7 @@ class ProductController extends Controller
             $update = Product::where('product_uid',$validatedData['product_uid'])->update(['product_assets' => $product_assets]);
             if($update){
                 return response()->json([
-                    'message'=>'Product  Assets Updated Successfully!',
+                    'message'=>'Product Assets Updated Successfully!',
                     'type'=>'success'
                 ]);
             }else{
