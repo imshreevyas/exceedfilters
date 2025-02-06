@@ -60,6 +60,7 @@ class ProductController extends Controller
         }
 
         // Specifications
+        $product_specification_assets = [];
         if($request->file('product_specification_assets') != NULL && count($request->file('product_specification_assets')) >  0){
             foreach ($request->file('product_specification_assets') as $asset) {
                 $type = $asset->getMimeType();
