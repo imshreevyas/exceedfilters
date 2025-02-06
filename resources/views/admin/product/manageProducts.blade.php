@@ -269,7 +269,7 @@
         formdata.append("_token", "{{ csrf_token() }}");
         axios.post(`${url}/admin/product/addAssets`, formdata).then(function(response) {
             // handle success
-            $(".addNewAssets")[0].reset();
+            $("#addNewAssets")[0].reset();
             show_Toaster(response.data.message, response.data.type)
             if (response.data.type === 'success') {
                 UpdateImageModal($('#product_uid').val())

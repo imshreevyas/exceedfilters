@@ -247,9 +247,18 @@ class ProductController extends Controller
                 $type = $asset->getMimeType();
             
                 $filename = Str::random(20) . '.' . $asset->getClientOriginalExtension();
-                $path = $asset->storeAs('product_assets/' . $validatedData['product_uid'], $filename);
+
+                $directory = 'product_assets/' . $validatedData['product_uid'];
+
+                // Ensure the directory exists and set permissions
+                if (!Storage::disk('public')->exists($directory)) {
+                    Storage::disk('public')->makeDirectory($directory);
+                    chmod(storage_path('app/public/' . $directory), 0775);
+                }
+
+                $path = $asset->storeAs($directory, $filename, 'public');
                 
-                $assetPath = 'storage/app/' . $path;
+                $assetPath = Storage::url($path);
                 $assets[] = [
                     'path' => $assetPath,
                 ];            
@@ -302,9 +311,17 @@ class ProductController extends Controller
                 $type = $asset->getMimeType();
             
                 $filename = Str::random(20) . '.' . $asset->getClientOriginalExtension();
-                $path = $asset->storeAs('product_specification_assets/' . $validatedData['product_uid'], $filename);
+                $directory = 'product_specification_assets/' . $productUid;
+
+                // Ensure the directory exists and set permissions
+                if (!Storage::disk('public')->exists($directory)) {
+                    Storage::disk('public')->makeDirectory($directory);
+                    chmod(storage_path('app/public/' . $directory), 0775);
+                }
+
+                $path = $asset->storeAs($directory, $filename, 'public');
                 
-                $assetPath = 'storage/app/' . $path;
+                $assetPath = Storage::url($path);
                 $assets[] = [
                     'original_filename' => $asset->getClientOriginalName(),
                     'path' => $assetPath,
