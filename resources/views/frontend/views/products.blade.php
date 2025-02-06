@@ -20,7 +20,7 @@
                 <div class="blog-card style3">
                     <div class="blog-img">
                         <a href="{{ env('APP_URL').'/product-details/'.$singleData['product_uid'] }}">
-                            <img src="{{ env('STORAGE_URL').$single_image }}" alt="{{ $singleData['product_name'] }}">
+                            <img src="{{ env('ASSET_URL').$single_image }}" alt="{{ $singleData['product_name'] }}">
                         </a>
                     </div>
                     <div class="blog-content">
