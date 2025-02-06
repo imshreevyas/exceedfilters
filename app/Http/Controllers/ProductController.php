@@ -45,30 +45,34 @@ class ProductController extends Controller
         $productUid = (string)Str::uuid()->getHex();
 
         // Product Images
-        foreach ($request->file('product_assets') as $asset) {
-            $type = $asset->getMimeType();
-        
-            $filename = Str::random(20) . '.' . $asset->getClientOriginalExtension();
-            $path = $asset->storeAs('product_assets/' . $productUid, $filename);
+        if(count($request->file('product_assets')) >  0){
+            foreach ($request->file('product_assets') as $asset) {
+                $type = $asset->getMimeType();
             
-            $assetPath = 'storage/app/' . $path;
-            $assets[] = [
-                'path' => $assetPath,
-            ];            
+                $filename = Str::random(20) . '.' . $asset->getClientOriginalExtension();
+                $path = $asset->storeAs('product_assets/' . $productUid, $filename);
+                
+                $assetPath = 'storage/app/' . $path;
+                $assets[] = [
+                    'path' => $assetPath,
+                ];            
+            }
         }
 
         // Specifications
-        foreach ($request->file('product_specification_assets') as $asset) {
-            $type = $asset->getMimeType();
-        
-            $filename = Str::random(20) . '.' . $asset->getClientOriginalExtension();
-            $path = $asset->storeAs('product_specification_assets/' . $productUid, $filename);
+        if(count($request->file('product_specification_assets')) >  0){
+            foreach ($request->file('product_specification_assets') as $asset) {
+                $type = $asset->getMimeType();
             
-            $assetPath = 'storage/app/' . $path;
-            $product_specification_assets[] = [
-                'original_filename' => $asset->getClientOriginalName(),
-                'path' => $assetPath,
-            ];            
+                $filename = Str::random(20) . '.' . $asset->getClientOriginalExtension();
+                $path = $asset->storeAs('product_specification_assets/' . $productUid, $filename);
+                
+                $assetPath = 'storage/app/' . $path;
+                $product_specification_assets[] = [
+                    'original_filename' => $asset->getClientOriginalName(),
+                    'path' => $assetPath,
+                ];            
+            }
         }
 
         $validatedData['product_uid'] = $productUid;
